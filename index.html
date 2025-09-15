@@ -2,27 +2,34 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>🌟 شروق - أميرة التكنولوجيا 🌟</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>🌟 شروق العمراني - عيد ميلاد أسطوري 🌟</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        'arabic': ['Cairo', 'Tajawal', 'sans-serif'],
+                        'arabic': ['Cairo', 'sans-serif'],
+                        'title': ['Amiri', 'Cairo', 'serif'],
+                    },
+                    container: {
+                        center: true,
+                        padding: {
+                            DEFAULT: '1rem',
+                            sm: '1.5rem',
+                            lg: '2rem',
+                            xl: '3rem',
+                        },
                     },
                     animation: {
-                        'bounce-slow': 'bounce 3s infinite',
-                        'pulse-slow': 'pulse 4s infinite',
-                        'spin-slow': 'spin 8s linear infinite',
                         'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                        'cosmic': 'cosmic 10s linear infinite',
-                        'shimmer': 'shimmer 3s linear infinite',
+                        'glow': 'glow 3s ease-in-out infinite alternate',
+                        'shimmer': 'shimmer 4s linear infinite',
+                        'cosmic': 'cosmic 20s ease-in-out infinite',
+                        'pulse-soft': 'pulse-soft 3s ease-in-out infinite',
                     }
                 }
             }
@@ -30,94 +37,119 @@
     </script>
     <style>
         * {
-            font-family: 'Cairo', 'Tajawal', sans-serif;
+            font-family: 'Cairo', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
         
-        body {
+        /* منع التمرير الأفقي والتأكد من الحدود */
+        html, body {
             overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
+        }
+        
+        body {
             background: #000;
             cursor: none;
             touch-action: manipulation;
+            position: relative;
         }
         
-        /* تحسين الأداء */
-        * {
-            will-change: auto;
+        /* حاوي آمن للمحتوى */
+        .safe-container {
+            width: 100%;
+            max-width: 100vw;
+            min-height: 100vh;
+            padding-left: max(1rem, env(safe-area-inset-left));
+            padding-right: max(1rem, env(safe-area-inset-right));
+            padding-top: max(1rem, env(safe-area-inset-top));
+            padding-bottom: max(1rem, env(safe-area-inset-bottom));
+            box-sizing: border-box;
+            margin: 0 auto;
         }
         
-        .animate-element {
-            will-change: transform, opacity;
+        /* تخطيط النص المحترف */
+        .text-layout {
+            max-width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            text-align: center;
         }
         
         /* مؤشر كوني محسّن */
         .cosmic-cursor {
             position: fixed;
-            width: 24px;
-            height: 24px;
-            background: radial-gradient(circle, rgba(255,255,255,0.9) 20%, rgba(0,255,255,0.6) 40%, transparent 70%);
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(255,255,255,0.9) 30%, rgba(0,255,255,0.6) 60%, transparent);
             border-radius: 50%;
             pointer-events: none;
             z-index: 10000;
             mix-blend-mode: screen;
-            transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 0 20px rgba(0,255,255,0.5);
+            transition: transform 0.1s ease;
+            box-shadow: 0 0 15px rgba(0,255,255,0.4);
         }
         
         @media (max-width: 768px) {
             .cosmic-cursor { display: none; }
         }
         
-        /* خلفية كونية متدرجة */
+        /* خلفية كونية ثابتة */
         .cosmic-background {
-            background: linear-gradient(45deg, 
-                #0a0a0a 0%, 
-                #1a0033 25%, 
-                #000d1a 50%, 
-                #001a33 75%, 
-                #0a0a0a 100%);
-            background-size: 400% 400%;
-            animation: cosmic 20s ease-in-out infinite;
+            background: radial-gradient(ellipse at center,
+                rgba(26, 0, 51, 0.8) 0%,
+                rgba(0, 13, 26, 0.9) 30%,
+                rgba(0, 26, 51, 0.95) 60%,
+                rgba(10, 10, 10, 1) 100%
+            );
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: -2;
+            animation: cosmic 25s ease-in-out infinite;
         }
         
         @keyframes cosmic {
-            0%, 100% { background-position: 0% 50%; }
-            25% { background-position: 100% 25%; }
-            50% { background-position: 50% 100%; }
-            75% { background-position: 25% 0%; }
+            0%, 100% { opacity: 1; }
+            25% { opacity: 0.8; }
+            50% { opacity: 0.9; }
+            75% { opacity: 0.85; }
         }
         
-        /* نصوص هولوجرافية محسّنة */
+        /* نصوص هولوجرافية احترافية */
         .holographic-text {
-            background: linear-gradient(45deg, 
-                #ff0080, #00ffff, #ff4080, #80ff00, #ff0080);
-            background-size: 300% 300%;
+            background: linear-gradient(
+                45deg,
+                #ff0080 0%, #00ffff 25%, #ff4080 50%, #80ff00 75%, #ff0080 100%
+            );
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: shimmer 4s ease-in-out infinite;
-            text-shadow: 0 0 30px rgba(255,0,128,0.5);
             position: relative;
+            text-shadow: none;
+            font-weight: 700;
         }
         
-        .holographic-text::before {
+        .holographic-text::after {
             content: attr(data-text);
             position: absolute;
             top: 0;
             left: 0;
             z-index: -1;
-            background: linear-gradient(45deg, 
-                rgba(255,0,128,0.3), rgba(0,255,255,0.3));
+            background: linear-gradient(
+                45deg,
+                rgba(255,0,128,0.2), rgba(0,255,255,0.2)
+            );
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: blur(1px);
+            filter: blur(2px);
         }
         
         @keyframes shimmer {
@@ -125,47 +157,57 @@
             50% { background-position: 100% 50%; }
         }
         
-        /* كارت زجاجي محسّن */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* كارت زجاجي احترافي */
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                0 0 50px rgba(0, 255, 255, 0.1);
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05),
+                0 0 80px rgba(0, 255, 255, 0.05);
         }
         
-        /* تأثيرات التحويم */
-        .hover-float {
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        /* تأثيرات التحويم المحسّنة */
+        .hover-effect {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
         }
         
-        .hover-float:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 16px 40px rgba(0, 255, 255, 0.2);
+        .hover-effect:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 
+                0 12px 40px rgba(0, 255, 255, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .hover-effect:hover {
+                transform: scale(1.01);
+            }
         }
         
         /* أنيميشن الطفو */
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-15px) rotate(2deg); }
-            66% { transform: translateY(-8px) rotate(-1deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(-5px) rotate(-0.5deg); }
         }
         
-        /* وهج متحرك */
+        /* وهج ناعم */
         @keyframes glow {
             from { 
-                box-shadow: 0 0 20px rgba(0, 255, 255, 0.3),
-                           0 0 40px rgba(255, 0, 128, 0.2); 
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.2),
+                           0 0 40px rgba(255, 0, 128, 0.1); 
             }
             to { 
-                box-shadow: 0 0 40px rgba(0, 255, 255, 0.6),
-                           0 0 80px rgba(255, 0, 128, 0.4); 
+                box-shadow: 0 0 30px rgba(0, 255, 255, 0.4),
+                           0 0 60px rgba(255, 0, 128, 0.2); 
             }
         }
         
-        /* شعاع نجمي */
+        /* النجوم الخلفية */
         .starfield {
             position: fixed;
             top: 0;
@@ -173,30 +215,30 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: -1;
         }
         
         .star {
             position: absolute;
             background: white;
             border-radius: 50%;
-            animation: twinkle 3s ease-in-out infinite;
+            animation: twinkle 4s ease-in-out infinite;
         }
         
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
         }
         
-        /* جسيمات عائمة */
-        .floating-particle {
+        /* جسيمات عائمة محسّنة */
+        .particle {
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
-            animation: particle-float 15s linear infinite;
+            animation: particle-rise 12s linear infinite;
         }
         
-        @keyframes particle-float {
+        @keyframes particle-rise {
             0% { 
                 transform: translateY(100vh) translateX(0) rotate(0deg) scale(0); 
                 opacity: 0; 
@@ -206,64 +248,82 @@
                 transform: scale(1); 
             }
             90% { 
-                opacity: 1; 
+                opacity: 0.8; 
             }
             100% { 
-                transform: translateY(-10vh) translateX(var(--drift)) rotate(360deg) scale(0); 
+                transform: translateY(-5vh) translateX(var(--drift)) rotate(360deg) scale(0); 
                 opacity: 0; 
             }
         }
         
-        /* بوابات سحرية */
+        /* بوابات سحرية محسّنة */
         .magic-portal {
             background: conic-gradient(from 0deg, 
                 #ff0080, #8000ff, #0080ff, #00ff80, 
                 #ffff00, #ff8000, #ff0080);
-            animation: portal-spin 6s linear infinite, glow 3s ease-in-out infinite;
-            filter: blur(1px);
+            animation: portal-spin 8s linear infinite, glow 4s ease-in-out infinite;
+            filter: blur(0.5px);
+            opacity: 0.6;
         }
         
         @keyframes portal-spin {
             to { transform: rotate(360deg); }
         }
         
-        /* كائنات ثلاثية الأبعاد */
-        .floating-3d {
-            animation: float 8s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px currentColor);
-            transform-style: preserve-3d;
+        /* عناصر طائرة محسّنة */
+        .floating-element {
+            animation: float 10s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px currentColor);
+            will-change: transform;
         }
         
-        /* تأثيرات للشاشات الصغيرة */
-        @media (max-width: 640px) {
-            .holographic-text {
-                font-size: clamp(1.5rem, 8vw, 3rem);
-                line-height: 1.2;
-            }
-            
-            .glass-card {
-                backdrop-filter: blur(15px);
-                margin: 0.5rem;
-            }
-            
-            .floating-3d {
-                font-size: clamp(2rem, 12vw, 4rem);
-            }
+        /* تخطيط مرن للأزرار */
+        .button-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            width: 100%;
+            max-width: 100%;
         }
         
-        @media (max-width: 480px) {
-            .holographic-text {
-                font-size: clamp(1.2rem, 7vw, 2.5rem);
+        @media (min-width: 640px) {
+            .button-grid {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
             }
         }
         
-        /* تأثيرات الكتابة المتحركة */
+        @media (min-width: 1024px) {
+            .button-grid {
+                gap: 1.5rem;
+            }
+        }
+        
+        /* أزرار لمسية محسّنة */
+        .touch-button {
+            transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+            border: none;
+            min-height: 44px; /* الحد الأدنى للمس */
+            touch-action: manipulation;
+        }
+        
+        .touch-button:active {
+            transform: scale(0.97);
+            filter: brightness(0.9);
+        }
+        
+        /* تأثيرات الكتابة */
         .typewriter {
             overflow: hidden;
-            border-right: 3px solid #00ffff;
+            border-right: 2px solid #00ffff;
             white-space: nowrap;
-            animation: typing 4s steps(40) 1s forwards, blink 1s infinite;
+            animation: typing 3s steps(30) 1s forwards, blink 1s infinite;
             max-width: 100%;
+            margin: 0 auto;
         }
         
         @keyframes typing {
@@ -275,50 +335,51 @@
             50% { border-color: transparent; }
         }
         
-        /* تحسينات الأداء للموبايل */
-        @media (max-width: 768px) {
-            .cosmic-background {
-                animation-duration: 30s;
+        /* تحسينات للهواتف */
+        @media (max-width: 640px) {
+            .safe-container {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            
+            .glass-morphism {
+                backdrop-filter: blur(15px);
+                margin: 0;
+            }
+            
+            .floating-element {
+                animation-duration: 12s;
             }
             
             .magic-portal {
-                animation-duration: 8s;
-            }
-            
-            .floating-3d {
                 animation-duration: 10s;
             }
         }
         
-        /* تأثير الضغط للمس */
-        .touch-feedback {
-            transition: all 0.15s ease;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        .touch-feedback:active {
-            transform: scale(0.95);
-            filter: brightness(0.8);
-        }
-        
-        /* تحسين الخطوط للشاشات عالية الدقة */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            .holographic-text {
-                text-rendering: optimizeLegibility;
-            }
-        }
-        
-        /* وضع السكون (لتوفير البطارية) */
+        /* تحسين الأداء */
         @media (prefers-reduced-motion: reduce) {
-            * {
+            *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
         }
+        
+        /* نبضة ناعمة */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.02); }
+        }
+        
+        /* تحسين الخط */
+        .text-crisp {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
     </style>
 </head>
-<body class="min-h-screen font-arabic">
+<body class="font-arabic">
     <!-- خلفية كونية -->
     <div class="cosmic-background"></div>
     
@@ -332,90 +393,107 @@
     <div id="three-container" class="fixed inset-0 z-0"></div>
     
     <!-- حاوي الجسيمات -->
-    <div id="particles-container" class="fixed inset-0 pointer-events-none z-10"></div>
+    <div id="particles-container" class="fixed inset-0 pointer-events-none z-5"></div>
     
     <!-- البوابات السحرية -->
-    <div class="magic-portal fixed w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 rounded-full opacity-30" 
-         style="top: 5%; left: 5%;"></div>
-    <div class="magic-portal fixed w-24 h-24 sm:w-36 sm:h-36 lg:w-48 lg:h-48 rounded-full opacity-25" 
-         style="top: 15%; right: 8%; animation-delay: 2s;"></div>
-    <div class="magic-portal fixed w-28 h-28 sm:w-40 sm:h-40 lg:w-56 lg:h-56 rounded-full opacity-20" 
-         style="bottom: 10%; left: 15%; animation-delay: 4s;"></div>
+    <div class="magic-portal fixed rounded-full" 
+         style="width: clamp(80px, 15vw, 180px); height: clamp(80px, 15vw, 180px); top: 8%; left: 8%;"></div>
+    <div class="magic-portal fixed rounded-full" 
+         style="width: clamp(60px, 12vw, 140px); height: clamp(60px, 12vw, 140px); top: 12%; right: 10%; animation-delay: 2s;"></div>
+    <div class="magic-portal fixed rounded-full" 
+         style="width: clamp(70px, 13vw, 160px); height: clamp(70px, 13vw, 160px); bottom: 15%; left: 12%; animation-delay: 4s;"></div>
     
     <!-- العناصر الطائرة -->
-    <div class="floating-3d fixed text-4xl sm:text-6xl lg:text-8xl" 
-         style="top: 8%; right: 12%; color: #ff0080; animation-delay: 1s;">🏰</div>
-    <div class="floating-3d fixed text-3xl sm:text-5xl lg:text-7xl" 
-         style="top: 70%; right: 15%; color: #00ffff; animation-delay: 3s;">🌟</div>
-    <div class="floating-3d fixed text-3xl sm:text-4xl lg:text-6xl" 
-         style="bottom: 20%; right: 25%; color: #80ff00; animation-delay: 5s;">🚀</div>
+    <div class="floating-element fixed" 
+         style="font-size: clamp(2rem, 8vw, 5rem); top: 5%; right: 8%; color: #ff0080; animation-delay: 1s;">🏰</div>
+    <div class="floating-element fixed" 
+         style="font-size: clamp(1.5rem, 6vw, 4rem); top: 65%; right: 12%; color: #00ffff; animation-delay: 3s;">🌟</div>
+    <div class="floating-element fixed" 
+         style="font-size: clamp(1.8rem, 7vw, 4.5rem); bottom: 25%; right: 20%; color: #80ff00; animation-delay: 5s;">🚀</div>
     
     <!-- المحتوى الرئيسي -->
-    <div class="relative z-20 min-h-screen flex items-center justify-center p-2 sm:p-4 lg:p-6">
-        <div class="w-full max-w-7xl mx-auto">
+    <div class="safe-container min-h-screen flex items-center justify-center relative z-10">
+        <div class="w-full max-w-6xl mx-auto">
             <!-- الكارت الرئيسي -->
-            <div class="glass-card rounded-2xl sm:rounded-3xl lg:rounded-[2rem] p-4 sm:p-8 lg:p-12 hover-float animate-element">
+            <div class="glass-morphism rounded-3xl p-6 sm:p-10 lg:p-16 hover-effect">
+                
                 <!-- العنوان الرئيسي -->
-                <div class="text-center mb-6 sm:mb-8 lg:mb-12">
-                    <div class="text-5xl sm:text-7xl lg:text-9xl mb-4 sm:mb-6 floating-3d" 
-                         style="animation-delay: 0s;">🌌</div>
-                    <h1 class="holographic-text text-3xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight"
+                <div class="text-center mb-8 sm:mb-12 lg:mb-16">
+                    <div class="floating-element mb-6" 
+                         style="font-size: clamp(3rem, 12vw, 6rem); animation-delay: 0s;">🌌</div>
+                    
+                    <h1 class="holographic-text text-crisp mb-6 sm:mb-8 leading-tight text-layout"
+                        style="font-size: clamp(1.8rem, 8vw, 4.5rem);"
                         data-text="عيد ميلاد كوني سعيد">
                         عيد ميلاد كوني سعيد
                     </h1>
+                    
                     <div class="w-16 sm:w-24 lg:w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full animate-glow"></div>
                 </div>
                 
                 <!-- اسم الأميرة -->
-                <div class="text-center mb-6 sm:mb-8 lg:mb-12">
-                    <h2 class="text-2xl sm:text-4xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 animate-pulse-slow">
-                        المهندسة الكونية
+                <div class="text-center mb-8 sm:mb-12 lg:mb-16">
+                    <h2 class="text-white font-bold mb-4 sm:mb-6 animate-pulse-soft text-crisp text-layout"
+                        style="font-size: clamp(1.2rem, 6vw, 2.5rem);">
+                        الأميرة الكونية
                     </h2>
-                    <h3 class="holographic-text text-xl sm:text-3xl lg:text-5xl font-bold mb-4 sm:mb-6"
+                    
+                    <h3 class="holographic-text font-title font-bold mb-6 sm:mb-8 text-crisp text-layout"
+                        style="font-size: clamp(1.5rem, 7vw, 3.5rem);"
                         data-text="شروق العمراني">
                         شروق العمراني
                     </h3>
-                    <div class="typewriter text-base sm:text-xl lg:text-2xl text-cyan-300 mx-auto max-w-full sm:max-w-2xl px-2">
+                    
+                    <div class="typewriter text-cyan-300 max-w-full text-layout"
+                         style="font-size: clamp(0.9rem, 4vw, 1.5rem);">
                         حاكمة مجرة التكنولوجيا ومُعلمة النجوم ✨
                     </div>
                 </div>
                 
                 <!-- الشارات والألقاب -->
-                <div class="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4 mb-6 sm:mb-8 lg:mb-12">
-                    <span class="glass-card px-3 py-2 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-full text-xs sm:text-sm lg:text-base text-cyan-300 hover-float touch-feedback">
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4 mb-8 sm:mb-12 lg:mb-16">
+                    <span class="glass-morphism px-3 py-2 sm:px-4 sm:py-3 lg:px-6 lg:py-3 rounded-full text-cyan-300 hover-effect touch-button text-crisp"
+                          style="font-size: clamp(0.75rem, 3vw, 1rem);">
                         💻 مهندسة IT
                     </span>
-                    <span class="glass-card px-3 py-2 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-full text-xs sm:text-sm lg:text-base text-purple-300 hover-float touch-feedback">
+                    <span class="glass-morphism px-3 py-2 sm:px-4 sm:py-3 lg:px-6 lg:py-3 rounded-full text-purple-300 hover-effect touch-button text-crisp"
+                          style="font-size: clamp(0.75rem, 3vw, 1rem);">
                         👩‍🏫 مُدرِّسة نجوم
                     </span>
-                    <span class="glass-card px-3 py-2 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-full text-xs sm:text-sm lg:text-base text-pink-300 hover-float touch-feedback">
+                    <span class="glass-morphism px-3 py-2 sm:px-4 sm:py-3 lg:px-6 lg:py-3 rounded-full text-pink-300 hover-effect touch-button text-crisp"
+                          style="font-size: clamp(0.75rem, 3vw, 1rem);">
                         🌟 أيقونة الإبداع
                     </span>
                 </div>
                 
                 <!-- العناصر التقنية -->
-                <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8 lg:mb-12">
-                    <div class="glass-card p-3 sm:p-4 lg:p-6 rounded-xl sm:rounded-2xl text-center hover-float touch-feedback animate-element">
-                        <div class="text-2xl sm:text-3xl lg:text-4xl mb-2 sm:mb-3">💻</div>
-                        <p class="text-xs sm:text-sm lg:text-base font-semibold text-blue-300">كوكب البرمجة</p>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-8 sm:mb-12 lg:mb-16">
+                    <div class="glass-morphism p-4 sm:p-6 rounded-2xl text-center hover-effect">
+                        <div class="mb-3" style="font-size: clamp(1.5rem, 6vw, 2.5rem);">💻</div>
+                        <p class="font-semibold text-blue-300 text-crisp" 
+                           style="font-size: clamp(0.7rem, 3vw, 0.9rem);">كوكب البرمجة</p>
                     </div>
-                    <div class="glass-card p-3 sm:p-4 lg:p-6 rounded-xl sm:rounded-2xl text-center hover-float touch-feedback animate-element" style="animation-delay: 0.1s;">
-                        <div class="text-2xl sm:text-3xl lg:text-4xl mb-2 sm:mb-3">🌐</div>
-                        <p class="text-xs sm:text-sm lg:text-base font-semibold text-green-300">محطة الويب</p>
+                    <div class="glass-morphism p-4 sm:p-6 rounded-2xl text-center hover-effect">
+                        <div class="mb-3" style="font-size: clamp(1.5rem, 6vw, 2.5rem);">🌐</div>
+                        <p class="font-semibold text-green-300 text-crisp"
+                           style="font-size: clamp(0.7rem, 3vw, 0.9rem);">محطة الويب</p>
                     </div>
-                    <div class="glass-card p-3 sm:p-4 lg:p-6 rounded-xl sm:rounded-2xl text-center hover-float touch-feedback animate-element" style="animation-delay: 0.2s;">
-                        <div class="text-2xl sm:text-3xl lg:text-4xl mb-2 sm:mb-3">🎓</div>
-                        <p class="text-xs sm:text-sm lg:text-base font-semibold text-purple-300">أكاديمية النجوم</p>
+                    <div class="glass-morphism p-4 sm:p-6 rounded-2xl text-center hover-effect">
+                        <div class="mb-3" style="font-size: clamp(1.5rem, 6vw, 2.5rem);">🎓</div>
+                        <p class="font-semibold text-purple-300 text-crisp"
+                           style="font-size: clamp(0.7rem, 3vw, 0.9rem);">أكاديمية النجوم</p>
                     </div>
-                    <div class="glass-card p-3 sm:p-4 lg:p-6 rounded-xl sm:rounded-2xl text-center hover-float touch-feedback animate-element" style="animation-delay: 0.3s;">
-                        <div class="text-2xl sm:text-3xl lg:text-4xl mb-2 sm:mb-3">💎</div>
-                        <p class="text-xs sm:text-sm lg:text-base font-semibold text-pink-300">جوهرة التعليم</p>
+                    <div class="glass-morphism p-4 sm:p-6 rounded-2xl text-center hover-effect">
+                        <div class="mb-3" style="font-size: clamp(1.5rem, 6vw, 2.5rem);">💎</div>
+                        <p class="font-semibold text-pink-300 text-crisp"
+                           style="font-size: clamp(0.7rem, 3vw, 0.9rem);">جوهرة التعليم</p>
                     </div>
                 </div>
                 
                 <!-- رسالة الأحلام -->
-                <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8 lg:mb-12 hover-float">
-                    <p class="text-sm sm:text-lg lg:text-xl xl:text-2xl text-gray-200 leading-relaxed text-center">
+                <div class="glass-morphism rounded-3xl p-6 sm:p-8 lg:p-10 mb-8 sm:mb-12 lg:mb-16 hover-effect">
+                    <p class="text-gray-200 leading-relaxed text-center text-crisp text-layout"
+                       style="font-size: clamp(0.9rem, 4vw, 1.3rem); line-height: 1.6;">
                         في هذا اليوم الكوني المقدس، تشع النجوم بنورك الأبدي يا حاكمة مجرة التكنولوجيا! 
                         لتكن الأكوان المتوازية شاهدة على عبقريتك في عالم البرمجة والتعليم. 
                         ستبقين منارة الحكمة في محيط اللانهاية! 🌟✨🚀
@@ -423,48 +501,50 @@
                 </div>
                 
                 <!-- أزرار التحكم الكونية -->
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center items-center">
+                <div class="button-grid">
                     <button onclick="triggerCosmicStorm()" 
-                            class="w-full sm:w-auto glass-card bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:from-cyan-400 hover:via-purple-400 hover:to-pink-400 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 lg:px-10 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl touch-feedback text-sm sm:text-base lg:text-lg">
+                            class="glass-morphism bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:from-cyan-400 hover:via-purple-400 hover:to-pink-400 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 lg:px-10 rounded-full hover-effect touch-button text-crisp"
+                            style="font-size: clamp(0.8rem, 3.5vw, 1.1rem);">
                         🌌 العاصفة الكونية
                     </button>
                     <button onclick="summonMysticCreatures()" 
-                            class="w-full sm:w-auto glass-card bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 hover:from-purple-500 hover:via-blue-500 hover:to-indigo-500 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 lg:px-10 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl touch-feedback text-sm sm:text-base lg:text-lg">
+                            class="glass-morphism bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 hover:from-purple-500 hover:via-blue-500 hover:to-indigo-500 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 lg:px-10 rounded-full hover-effect touch-button text-crisp"
+                            style="font-size: clamp(0.8rem, 3.5vw, 1.1rem);">
                         🐉 مخلوقات السعادة
                     </button>
                     <button onclick="openStarGate()" 
-                            class="w-full sm:w-auto glass-card bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 hover:from-green-400 hover:via-teal-400 hover:to-blue-400 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 lg:px-10 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl touch-feedback text-sm sm:text-base lg:text-lg">
+                            class="glass-morphism bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 hover:from-green-400 hover:via-teal-400 hover:to-blue-400 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 lg:px-10 rounded-full hover-effect touch-button text-crisp"
+                            style="font-size: clamp(0.8rem, 3.5vw, 1.1rem);">
                         🌀 بوابة النجوم
                     </button>
                 </div>
+                
             </div>
         </div>
     </div>
 
     <script>
-        // إعداد الوضع المظلم
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-        }
-        
         // تحسين الأداء - متغيرات عامة
         let scene, camera, renderer, galaxyMesh, animationId;
         let mouseX = 0, mouseY = 0;
         let particleCount = 0;
-        let maxParticles = window.innerWidth < 768 ? 50 : 100;
+        const isMobile = window.innerWidth < 768;
+        const maxParticles = isMobile ? 30 : 80;
         
         // تهيئة Three.js المحسّنة
         function initOptimizedThreeJS() {
+            if (!window.THREE) return;
+            
             scene = new THREE.Scene();
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
             
             renderer = new THREE.WebGLRenderer({ 
                 alpha: true, 
-                antialias: window.innerWidth > 768,
-                powerPreference: "high-performance"
+                antialias: !isMobile,
+                powerPreference: isMobile ? "low-power" : "high-performance"
             });
             renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2));
             document.getElementById('three-container').appendChild(renderer.domElement);
             
             createOptimizedGalaxy();
@@ -474,7 +554,7 @@
         
         // إنشاء مجرة محسّنة
         function createOptimizedGalaxy() {
-            const particleCount = window.innerWidth < 768 ? 3000 : 8000;
+            const particleCount = isMobile ? 2000 : 6000;
             const geometry = new THREE.BufferGeometry();
             const vertices = new Float32Array(particleCount * 3);
             const colors = new Float32Array(particleCount * 3);
@@ -484,12 +564,12 @@
                 const angle = i * 0.01;
                 const radius = (i / 100) * Math.cos(angle * 0.1);
                 
-                vertices[i3] = Math.cos(angle) * radius + (Math.random() - 0.5) * 30;
-                vertices[i3 + 1] = (Math.random() - 0.5) * 15;
-                vertices[i3 + 2] = Math.sin(angle) * radius + (Math.random() - 0.5) * 30;
+                vertices[i3] = Math.cos(angle) * radius + (Math.random() - 0.5) * 25;
+                vertices[i3 + 1] = (Math.random() - 0.5) * 12;
+                vertices[i3 + 2] = Math.sin(angle) * radius + (Math.random() - 0.5) * 25;
                 
                 const hue = (angle / (Math.PI * 2)) % 1;
-                const color = new THREE.Color().setHSL(hue, 0.8, 0.7);
+                const color = new THREE.Color().setHSL(hue, 0.7, 0.6);
                 colors[i3] = color.r;
                 colors[i3 + 1] = color.g;
                 colors[i3 + 2] = color.b;
@@ -499,10 +579,10 @@
             geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
             
             const material = new THREE.PointsMaterial({
-                size: window.innerWidth < 768 ? 0.8 : 1.2,
+                size: isMobile ? 0.6 : 1,
                 vertexColors: true,
                 transparent: true,
-                opacity: 0.8,
+                opacity: 0.7,
                 blending: THREE.AdditiveBlending
             });
             
@@ -515,8 +595,8 @@
             animationId = requestAnimationFrame(animate3D);
             
             if (galaxyMesh) {
-                galaxyMesh.rotation.z += 0.001;
-                galaxyMesh.rotation.y += 0.0005;
+                galaxyMesh.rotation.z += 0.0008;
+                galaxyMesh.rotation.y += 0.0003;
             }
             
             renderer.render(scene, camera);
@@ -525,35 +605,34 @@
         // إنشاء حقل النجوم
         function createStarField() {
             const starField = document.getElementById('starfield');
-            const starCount = window.innerWidth < 768 ? 50 : 100;
+            const starCount = isMobile ? 40 : 80;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
-                star.style.width = star.style.height = Math.random() * 3 + 1 + 'px';
-                star.style.animationDelay = Math.random() * 3 + 's';
-                star.style.animationDuration = Math.random() * 3 + 2 + 's';
+                star.style.width = star.style.height = (Math.random() * 2 + 1) + 'px';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.animationDuration = (Math.random() * 3 + 3) + 's';
                 starField.appendChild(star);
             }
         }
         
         // مؤشر كوني محسّن
         const cursor = document.getElementById('cosmicCursor');
-        let cursorTrail = [];
         
         function updateCursor(e) {
+            if (!cursor || isMobile) return;
+            
             mouseX = e.clientX;
             mouseY = e.clientY;
             
-            if (cursor) {
-                cursor.style.left = mouseX - 12 + 'px';
-                cursor.style.top = mouseY - 12 + 'px';
-            }
+            cursor.style.left = mouseX - 10 + 'px';
+            cursor.style.top = mouseY - 10 + 'px';
             
             // أثر المؤشر المحسّن
-            if (Math.random() > 0.8) {
+            if (Math.random() > 0.85) {
                 createOptimizedTrail(mouseX, mouseY);
             }
         }
@@ -566,22 +645,24 @@
                 position: fixed;
                 left: ${x}px;
                 top: ${y}px;
-                width: 4px;
-                height: 4px;
-                background: hsl(${Math.random() * 360}, 70%, 60%);
+                width: 3px;
+                height: 3px;
+                background: hsl(${Math.random() * 360}, 60%, 70%);
                 border-radius: 50%;
                 pointer-events: none;
                 z-index: 9999;
-                animation: trail-fade 1s ease-out forwards;
+                animation: trail-fade 0.8s ease-out forwards;
             `;
             
             document.body.appendChild(trail);
             particleCount++;
             
             setTimeout(() => {
-                trail.remove();
-                particleCount--;
-            }, 1000);
+                if (trail.parentNode) {
+                    trail.remove();
+                    particleCount--;
+                }
+            }, 800);
         }
         
         // جسيمات عائمة محسّنة
@@ -589,67 +670,71 @@
             if (particleCount >= maxParticles) return;
             
             const particle = document.createElement('div');
-            particle.className = 'floating-particle';
+            particle.className = 'particle';
             
-            const size = Math.random() * 6 + 2;
+            const size = Math.random() * 4 + 2;
             const hue = Math.random() * 360;
             
             particle.style.cssText = `
                 left: ${Math.random() * 100}vw;
                 width: ${size}px;
                 height: ${size}px;
-                background: hsl(${hue}, 70%, 60%);
-                --drift: ${(Math.random() - 0.5) * 200}px;
-                animation-duration: ${Math.random() * 10 + 15}s;
-                animation-delay: ${Math.random() * 3}s;
-                box-shadow: 0 0 ${size * 2}px hsl(${hue}, 70%, 60%);
+                background: hsl(${hue}, 60%, 70%);
+                --drift: ${(Math.random() - 0.5) * 150}px;
+                animation-duration: ${Math.random() * 8 + 12}s;
+                animation-delay: ${Math.random() * 2}s;
+                box-shadow: 0 0 ${size * 1.5}px hsl(${hue}, 60%, 70%);
             `;
             
             document.getElementById('particles-container').appendChild(particle);
             particleCount++;
             
             setTimeout(() => {
-                particle.remove();
-                particleCount--;
-            }, 18000);
+                if (particle.parentNode) {
+                    particle.remove();
+                    particleCount--;
+                }
+            }, 15000);
         }
         
-        // تأثيرات التفاعل
+        // تأثيرات التفاعل المحسّنة
         function triggerCosmicStorm() {
-            for (let i = 0; i < 30; i++) {
+            const explosionCount = isMobile ? 15 : 25;
+            for (let i = 0; i < explosionCount; i++) {
                 setTimeout(() => {
                     createCosmicExplosion();
-                }, i * 50);
+                }, i * 40);
             }
             
-            // تأثير اهتزاز الشاشة
-            document.body.style.animation = 'shake 0.5s ease-in-out 3';
+            // تأثير اهتزاز خفيف
+            document.body.style.animation = 'shake 0.3s ease-in-out 2';
             setTimeout(() => {
                 document.body.style.animation = '';
-            }, 1500);
+            }, 600);
         }
         
         function createCosmicExplosion() {
             const x = Math.random() * window.innerWidth;
             const y = Math.random() * window.innerHeight;
+            const sparkCount = isMobile ? 8 : 12;
             
-            for (let i = 0; i < 12; i++) {
+            for (let i = 0; i < sparkCount; i++) {
                 const spark = document.createElement('div');
-                const angle = (i * 30) * Math.PI / 180;
-                const distance = Math.random() * 150 + 50;
+                const angle = (i * (360 / sparkCount)) * Math.PI / 180;
+                const distance = Math.random() * 100 + 30;
                 const hue = Math.random() * 360;
                 
                 spark.style.cssText = `
                     position: fixed;
                     left: ${x}px;
                     top: ${y}px;
-                    width: 4px;
-                    height: 4px;
+                    width: 3px;
+                    height: 3px;
                     background: hsl(${hue}, 100%, 60%);
                     border-radius: 50%;
                     pointer-events: none;
                     z-index: 10000;
-                    box-shadow: 0 0 10px hsl(${hue}, 100%, 60%);
+                    box-shadow: 0 0 8px hsl(${hue}, 100%, 60%);
                 `;
                 
                 const endX = Math.cos(angle) * distance;
@@ -659,7 +744,7 @@
                     { transform: 'translate(0, 0) scale(1)', opacity: 1 },
                     { transform: `translate(${endX}px, ${endY}px) scale(0)`, opacity: 0 }
                 ], {
-                    duration: 1000 + Math.random() * 500,
+                    duration: 800 + Math.random() * 400,
                     easing: 'ease-out'
                 }).onfinish = () => spark.remove();
                 
@@ -669,34 +754,35 @@
         
         function summonMysticCreatures() {
             const creatures = ['🐉', '🦄', '🧚‍♀️', '🦋', '⭐', '💫', '🌟', '✨'];
+            const creatureCount = isMobile ? 5 : 8;
             
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < creatureCount; i++) {
                 setTimeout(() => {
                     const creature = document.createElement('div');
                     const emoji = creatures[Math.floor(Math.random() * creatures.length)];
                     
                     creature.style.cssText = `
                         position: fixed;
-                        font-size: ${Math.random() * 2 + 2}rem;
-                        left: -100px;
+                        font-size: ${Math.random() * 1.5 + 1.5}rem;
+                        left: -80px;
                         top: ${Math.random() * window.innerHeight}px;
                         z-index: 9999;
                         pointer-events: none;
-                        filter: hue-rotate(${Math.random() * 360}deg) drop-shadow(0 0 20px currentColor);
+                        filter: hue-rotate(${Math.random() * 360}deg) drop-shadow(0 0 15px currentColor);
                     `;
                     creature.textContent = emoji;
                     
                     creature.animate([
-                        { transform: 'translateX(-100px) rotate(0deg)', opacity: 0 },
-                        { transform: `translateX(${window.innerWidth / 2}px) rotate(180deg) scale(1.5)`, opacity: 1, offset: 0.5 },
-                        { transform: `translateX(${window.innerWidth + 100}px) rotate(360deg)`, opacity: 0 }
+                        { transform: 'translateX(-80px) rotate(0deg)', opacity: 0 },
+                        { transform: `translateX(${window.innerWidth / 2}px) rotate(180deg) scale(1.3)`, opacity: 1, offset: 0.5 },
+                        { transform: `translateX(${window.innerWidth + 80}px) rotate(360deg)`, opacity: 0 }
                     ], {
-                        duration: 4000,
+                        duration: 3500,
                         easing: 'ease-in-out'
                     }).onfinish = () => creature.remove();
                     
                     document.body.appendChild(creature);
-                }, i * 200);
+                }, i * 150);
             }
         }
         
@@ -706,8 +792,8 @@
                 position: fixed;
                 top: 50%;
                 left: 50%;
-                width: 20px;
-                height: 20px;
+                width: 15px;
+                height: 15px;
                 border-radius: 50%;
                 background: conic-gradient(from 0deg, #ff0080, #8000ff, #0080ff, #00ff80, #ffff00, #ff8000, #ff0080);
                 transform: translate(-50%, -50%);
@@ -715,12 +801,14 @@
                 pointer-events: none;
             `;
             
+            const maxSize = isMobile ? '250px' : '350px';
+            
             gate.animate([
-                { width: '20px', height: '20px', opacity: 0 },
-                { width: '400px', height: '400px', opacity: 1, offset: 0.5 },
-                { width: '20px', height: '20px', opacity: 0 }
+                { width: '15px', height: '15px', opacity: 0 },
+                { width: maxSize, height: maxSize, opacity: 1, offset: 0.5 },
+                { width: '15px', height: '15px', opacity: 0 }
             ], {
-                duration: 3000,
+                duration: 2500,
                 easing: 'ease-out'
             }).onfinish = () => gate.remove();
             
@@ -728,10 +816,11 @@
             
             // إطلاق مخلوقات من البوابة
             setTimeout(() => {
-                for (let i = 0; i < 15; i++) {
-                    setTimeout(() => createStarCreature(), i * 100);
+                const creatureCount = isMobile ? 8 : 12;
+                for (let i = 0; i < creatureCount; i++) {
+                    setTimeout(() => createStarCreature(), i * 80);
                 }
-            }, 1000);
+            }, 800);
         }
         
         function createStarCreature() {
@@ -742,7 +831,7 @@
                 position: fixed;
                 top: 50%;
                 left: 50%;
-                font-size: 1.5rem;
+                font-size: 1.2rem;
                 z-index: 9999;
                 pointer-events: none;
                 transform: translate(-50%, -50%);
@@ -750,76 +839,91 @@
             creature.textContent = creatures[Math.floor(Math.random() * creatures.length)];
             
             const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 300 + 100;
+            const distance = Math.random() * 200 + 80;
             const endX = Math.cos(angle) * distance;
             const endY = Math.sin(angle) * distance;
             
             creature.animate([
                 { transform: 'translate(-50%, -50%) scale(0) rotate(0deg)', opacity: 0 },
-                { transform: 'translate(-50%, -50%) scale(1.5) rotate(180deg)', opacity: 1, offset: 0.3 },
+                { transform: 'translate(-50%, -50%) scale(1.3) rotate(180deg)', opacity: 1, offset: 0.3 },
                 { transform: `translate(${endX}px, ${endY}px) scale(0) rotate(360deg)`, opacity: 0 }
             ], {
-                duration: 2000,
+                duration: 1800,
                 easing: 'ease-out'
             }).onfinish = () => creature.remove();
             
             document.body.appendChild(creature);
         }
         
-        // إضافة أنيميشن الاهتزاز
-        const shakeStyle = document.createElement('style');
-        shakeStyle.textContent = `
+        // إضافة أنيميشن الاهتزاز والتلاشي
+        const dynamicStyles = document.createElement('style');
+        dynamicStyles.textContent = `
             @keyframes shake {
                 0%, 100% { transform: translateX(0); }
-                10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
-                20%, 40%, 60%, 80% { transform: translateX(2px); }
+                25% { transform: translateX(-1px); }
+                75% { transform: translateX(1px); }
             }
             @keyframes trail-fade {
                 to { opacity: 0; transform: scale(0); }
             }
         `;
-        document.head.appendChild(shakeStyle);
+        document.head.appendChild(dynamicStyles);
         
         // تهيئة التطبيق
         function initApp() {
+            // إنشاء العناصر الأساسية
             createStarField();
-            initOptimizedThreeJS();
+            
+            // تهيئة Three.js مع معالجة الأخطاء
+            try {
+                initOptimizedThreeJS();
+            } catch (error) {
+                console.log('Three.js initialization skipped');
+            }
             
             // إنشاء جسيمات دورية
+            const particleInterval = isMobile ? 1200 : 600;
             setInterval(() => {
                 if (particleCount < maxParticles) {
                     createFloatingParticle();
                 }
-            }, window.innerWidth < 768 ? 800 : 400);
+            }, particleInterval);
             
             // تأثيرات تلقائية
             setInterval(() => {
-                if (Math.random() > 0.9) {
+                if (Math.random() > 0.92) {
                     triggerCosmicStorm();
                 }
-            }, 15000);
+            }, 18000);
             
             setInterval(() => {
-                if (Math.random() > 0.85) {
+                if (Math.random() > 0.88) {
                     summonMysticCreatures();
                 }
-            }, 20000);
+            }, 25000);
         }
         
         // معالجة الأحداث
-        document.addEventListener('mousemove', updateCursor);
+        if (!isMobile) {
+            document.addEventListener('mousemove', updateCursor);
+        }
+        
         document.addEventListener('touchstart', (e) => {
-            updateCursor({ clientX: e.touches[0].clientX, clientY: e.touches[0].clientY });
+            if (e.touches[0]) {
+                updateCursor({ 
+                    clientX: e.touches[0].clientX, 
+                    clientY: e.touches[0].clientY 
+                });
+            }
         });
         
+        // معالجة تغيير حجم الشاشة
         window.addEventListener('resize', () => {
             if (camera && renderer) {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
             }
-            
-            maxParticles = window.innerWidth < 768 ? 50 : 100;
         });
         
         // بدء التطبيق
@@ -830,7 +934,9 @@
             if (document.hidden) {
                 if (animationId) cancelAnimationFrame(animationId);
             } else {
-                animate3D();
+                if (scene && camera && renderer) {
+                    animate3D();
+                }
             }
         });
     </script>
