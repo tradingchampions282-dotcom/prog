@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>🌟 شروق العمراني - عيد ميلاد أسطوري 🌟</title>
+    <title>🎂 عيد ميلاد شروق العمراني - احتفال أسطوري 🎉</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -30,6 +30,7 @@
                         'shimmer': 'shimmer 4s linear infinite',
                         'cosmic': 'cosmic 20s ease-in-out infinite',
                         'pulse-soft': 'pulse-soft 3s ease-in-out infinite',
+                        'birthday-bounce': 'birthday-bounce 2s ease-in-out infinite',
                     }
                 }
             }
@@ -79,30 +80,31 @@
             text-align: center;
         }
         
-        /* مؤشر كوني محسّن */
-        .cosmic-cursor {
+        /* مؤشر احتفالي */
+        .birthday-cursor {
             position: fixed;
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, rgba(255,255,255,0.9) 30%, rgba(0,255,255,0.6) 60%, transparent);
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle, rgba(255,215,0,0.9) 30%, rgba(220,20,60,0.6) 60%, transparent);
             border-radius: 50%;
             pointer-events: none;
             z-index: 10000;
             mix-blend-mode: screen;
             transition: transform 0.1s ease;
-            box-shadow: 0 0 15px rgba(0,255,255,0.4);
+            box-shadow: 0 0 20px rgba(255,140,0,0.5);
         }
         
         @media (max-width: 768px) {
-            .cosmic-cursor { display: none; }
+            .birthday-cursor { display: none; }
         }
         
-        /* خلفية كونية ثابتة */
-        .cosmic-background {
+        /* خلفية احتفالية */
+        .birthday-background {
             background: radial-gradient(ellipse at center,
-                rgba(26, 0, 51, 0.8) 0%,
-                rgba(0, 13, 26, 0.9) 30%,
-                rgba(0, 26, 51, 0.95) 60%,
+                rgba(139, 0, 0, 0.3) 0%,
+                rgba(255, 140, 0, 0.2) 20%,
+                rgba(25, 25, 112, 0.4) 50%,
+                rgba(220, 20, 60, 0.3) 80%,
                 rgba(10, 10, 10, 1) 100%
             );
             position: fixed;
@@ -111,33 +113,33 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            animation: cosmic 25s ease-in-out infinite;
+            animation: birthday-shimmer 15s ease-in-out infinite;
         }
         
-        @keyframes cosmic {
+        @keyframes birthday-shimmer {
             0%, 100% { opacity: 1; }
             25% { opacity: 0.8; }
             50% { opacity: 0.9; }
             75% { opacity: 0.85; }
         }
         
-        /* نصوص هولوجرافية احترافية */
-        .holographic-text {
+        /* نصوص احتفالية هولوجرافية */
+        .birthday-holographic {
             background: linear-gradient(
                 45deg,
-                #ff0080 0%, #00ffff 25%, #ff4080 50%, #80ff00 75%, #ff0080 100%
+                #FFD700 0%, #FF6B35 20%, #DC143C 40%, #4169E1 60%, #FF1493 80%, #FFD700 100%
             );
-            background-size: 200% 200%;
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: shimmer 4s ease-in-out infinite;
+            animation: birthday-shimmer-text 3s ease-in-out infinite;
             position: relative;
             text-shadow: none;
             font-weight: 700;
         }
         
-        .holographic-text::after {
+        .birthday-holographic::after {
             content: attr(data-text);
             position: absolute;
             top: 0;
@@ -145,69 +147,77 @@
             z-index: -1;
             background: linear-gradient(
                 45deg,
-                rgba(255,0,128,0.2), rgba(0,255,255,0.2)
+                rgba(255,215,0,0.3), rgba(220,20,60,0.3)
             );
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: blur(2px);
         }
         
-        @keyframes shimmer {
+        @keyframes birthday-shimmer-text {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
         
-        /* كارت زجاجي احترافي */
-        .glass-morphism {
-            background: rgba(255, 255, 255, 0.03);
+        /* كارت زجاجي احتفالي */
+        .birthday-glass {
+            background: rgba(255, 215, 0, 0.05);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 140, 0, 0.2);
             box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05),
-                0 0 80px rgba(0, 255, 255, 0.05);
+                0 8px 32px rgba(220, 20, 60, 0.3),
+                inset 0 1px 0 rgba(255, 215, 0, 0.1),
+                0 0 80px rgba(255, 105, 180, 0.1);
         }
         
-        /* تأثيرات التحويم المحسّنة */
-        .hover-effect {
+        /* تأثيرات التحويم الاحتفالية */
+        .birthday-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             transform-origin: center;
         }
         
-        .hover-effect:hover {
-            transform: translateY(-4px) scale(1.01);
+        .birthday-hover:hover {
+            transform: translateY(-6px) scale(1.02);
             box-shadow: 
-                0 12px 40px rgba(0, 255, 255, 0.15),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
+                0 12px 40px rgba(255, 140, 0, 0.2),
+                0 0 0 1px rgba(255, 215, 0, 0.2);
         }
         
         @media (max-width: 768px) {
-            .hover-effect:hover {
+            .birthday-hover:hover {
                 transform: scale(1.01);
             }
         }
         
-        /* أنيميشن الطفو */
+        /* أنيميشن الطفو الاحتفالي */
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-10px) rotate(1deg); }
-            66% { transform: translateY(-5px) rotate(-0.5deg); }
+            33% { transform: translateY(-12px) rotate(2deg); }
+            66% { transform: translateY(-6px) rotate(-1deg); }
         }
         
-        /* وهج ناعم */
+        /* نبضة عيد الميلاد */
+        @keyframes birthday-bounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(5deg); }
+            50% { transform: scale(1.05) rotate(0deg); }
+            75% { transform: scale(1.1) rotate(-5deg); }
+        }
+        
+        /* وهج احتفالي */
         @keyframes glow {
             from { 
-                box-shadow: 0 0 20px rgba(0, 255, 255, 0.2),
-                           0 0 40px rgba(255, 0, 128, 0.1); 
+                box-shadow: 0 0 20px rgba(255, 140, 0, 0.3),
+                           0 0 40px rgba(220, 20, 60, 0.2); 
             }
             to { 
-                box-shadow: 0 0 30px rgba(0, 255, 255, 0.4),
-                           0 0 60px rgba(255, 0, 128, 0.2); 
+                box-shadow: 0 0 40px rgba(255, 140, 0, 0.6),
+                           0 0 80px rgba(220, 20, 60, 0.4); 
             }
         }
         
-        /* النجوم الخلفية */
+        /* النجوم الاحتفالية */
         .starfield {
             position: fixed;
             top: 0;
@@ -215,30 +225,29 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 30;
         }
         
-        .star {
+        .birthday-star {
             position: absolute;
-            background: white;
             border-radius: 50%;
-            animation: twinkle 4s ease-in-out infinite;
+            animation: birthday-twinkle 3s ease-in-out infinite;
         }
         
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
+        @keyframes birthday-twinkle {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.4); }
         }
         
-        /* جسيمات عائمة محسّنة */
-        .particle {
+        /* جسيمات احتفالية */
+        .birthday-particle {
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
-            animation: particle-rise 12s linear infinite;
+            animation: birthday-rise 10s linear infinite;
         }
         
-        @keyframes particle-rise {
+        @keyframes birthday-rise {
             0% { 
                 transform: translateY(100vh) translateX(0) rotate(0deg) scale(0); 
                 opacity: 0; 
@@ -256,29 +265,30 @@
             }
         }
         
-        /* بوابات سحرية محسّنة */
-        .magic-portal {
+        /* بوابات احتفالية */
+        .birthday-portal {
             background: conic-gradient(from 0deg, 
-                #ff0080, #8000ff, #0080ff, #00ff80, 
-                #ffff00, #ff8000, #ff0080);
-            animation: portal-spin 8s linear infinite, glow 4s ease-in-out infinite;
+                #FFD700, #FF6B35, #DC143C, #4169E1, 
+                #FF1493, #FF8C00, #FFD700);
+            animation: portal-celebration 6s linear infinite, glow 4s ease-in-out infinite;
             filter: blur(0.5px);
-            opacity: 0.6;
+            opacity: 0.7;
         }
         
-        @keyframes portal-spin {
-            to { transform: rotate(360deg); }
+        @keyframes portal-celebration {
+            to { transform: rotate(360deg) scale(1.1); }
         }
         
-        /* عناصر طائرة محسّنة */
-        .floating-element {
-            animation: float 10s ease-in-out infinite;
+        /* عناصر طائرة احتفالية */
+        .birthday-floating {
+            animation: float 8s ease-in-out infinite;
             filter: drop-shadow(0 0 15px currentColor);
             will-change: transform;
+            z-index: 60;
         }
         
         /* تخطيط مرن للأزرار */
-        .button-grid {
+        .birthday-button-grid {
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
@@ -287,7 +297,7 @@
         }
         
         @media (min-width: 640px) {
-            .button-grid {
+            .birthday-button-grid {
                 flex-direction: row;
                 justify-content: center;
                 flex-wrap: wrap;
@@ -296,43 +306,79 @@
         }
         
         @media (min-width: 1024px) {
-            .button-grid {
+            .birthday-button-grid {
                 gap: 1.5rem;
             }
         }
         
-        /* أزرار لمسية محسّنة */
-        .touch-button {
+        /* أزرار احتفالية */
+        .birthday-button {
             transition: all 0.2s ease;
             -webkit-tap-highlight-color: transparent;
             outline: none;
             border: none;
-            min-height: 44px; /* الحد الأدنى للمس */
+            min-height: 44px;
             touch-action: manipulation;
+            position: relative;
+            overflow: hidden;
         }
         
-        .touch-button:active {
+        .birthday-button:active {
             transform: scale(0.97);
             filter: brightness(0.9);
         }
         
+        .birthday-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .birthday-button:hover::before {
+            left: 100%;
+        }
+        
         /* تأثيرات الكتابة */
-        .typewriter {
+        .birthday-typewriter {
             overflow: hidden;
-            border-right: 2px solid #00ffff;
+            border-right: 3px solid #FFD700;
             white-space: nowrap;
-            animation: typing 3s steps(30) 1s forwards, blink 1s infinite;
+            animation: birthday-typing 3s steps(30) 1s forwards, birthday-blink 1s infinite;
             max-width: 100%;
             margin: 0 auto;
         }
         
-        @keyframes typing {
+        @keyframes birthday-typing {
             from { width: 0; }
             to { width: 100%; }
         }
         
-        @keyframes blink {
+        @keyframes birthday-blink {
             50% { border-color: transparent; }
+        }
+        
+        /* كونفيتي احتفالي */
+        .confetti-piece {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            animation: confetti-fall 3s linear infinite;
+        }
+        
+        @keyframes confetti-fall {
+            0% { 
+                transform: translateY(-100vh) rotateZ(0deg);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(100vh) rotateZ(360deg);
+                opacity: 0;
+            }
         }
         
         /* تحسينات للهواتف */
@@ -342,17 +388,17 @@
                 padding-right: 0.75rem;
             }
             
-            .glass-morphism {
+            .birthday-glass {
                 backdrop-filter: blur(15px);
                 margin: 0;
             }
             
-            .floating-element {
-                animation-duration: 12s;
+            .birthday-floating {
+                animation-duration: 10s;
             }
             
-            .magic-portal {
-                animation-duration: 10s;
+            .birthday-portal {
+                animation-duration: 8s;
             }
         }
         
@@ -368,7 +414,7 @@
         /* نبضة ناعمة */
         @keyframes pulse-soft {
             0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.02); }
+            50% { opacity: 0.9; transform: scale(1.03); }
         }
         
         /* تحسين الخط */
@@ -380,142 +426,153 @@
     </style>
 </head>
 <body class="font-arabic">
-    <!-- خلفية كونية -->
-    <div class="cosmic-background"></div>
+    <!-- خلفية احتفالية -->
+    <div class="birthday-background"></div>
     
-    <!-- مؤشر كوني -->
-    <div class="cosmic-cursor" id="cosmicCursor"></div>
+    <!-- مؤشر احتفالي -->
+    <div class="birthday-cursor" id="birthdayCursor"></div>
     
-    <!-- حقل النجوم -->
+    <!-- حقل النجوم الاحتفالية -->
     <div class="starfield" id="starfield"></div>
     
     <!-- Three.js Container -->
     <div id="three-container" class="fixed inset-0 z-0"></div>
     
-    <!-- حاوي الجسيمات -->
-    <div id="particles-container" class="fixed inset-0 pointer-events-none z-5"></div>
+    <!-- حاوي الجسيمات الاحتفالية (فوق النصوص) -->
+    <div id="particles-container" class="fixed inset-0 pointer-events-none z-50"></div>
     
-    <!-- البوابات السحرية -->
-    <div class="magic-portal fixed rounded-full" 
-         style="width: clamp(80px, 15vw, 180px); height: clamp(80px, 15vw, 180px); top: 8%; left: 8%;"></div>
-    <div class="magic-portal fixed rounded-full" 
-         style="width: clamp(60px, 12vw, 140px); height: clamp(60px, 12vw, 140px); top: 12%; right: 10%; animation-delay: 2s;"></div>
-    <div class="magic-portal fixed rounded-full" 
-         style="width: clamp(70px, 13vw, 160px); height: clamp(70px, 13vw, 160px); bottom: 15%; left: 12%; animation-delay: 4s;"></div>
+    <!-- حاوي الكونفيتي (فوق كل شيء) -->
+    <div id="confetti-container" class="fixed inset-0 pointer-events-none z-60"></div>
     
-    <!-- العناصر الطائرة -->
-    <div class="floating-element fixed" 
-         style="font-size: clamp(2rem, 8vw, 5rem); top: 5%; right: 8%; color: #ff0080; animation-delay: 1s;">🏰</div>
-    <div class="floating-element fixed" 
-         style="font-size: clamp(1.5rem, 6vw, 4rem); top: 65%; right: 12%; color: #00ffff; animation-delay: 3s;">🌟</div>
-    <div class="floating-element fixed" 
-         style="font-size: clamp(1.8rem, 7vw, 4.5rem); bottom: 25%; right: 20%; color: #80ff00; animation-delay: 5s;">🚀</div>
+    <!-- البوابات الاحتفالية (فوق النصوص) -->
+    <div class="birthday-portal fixed rounded-full z-55" 
+         style="width: clamp(90px, 16vw, 200px); height: clamp(90px, 16vw, 200px); top: 6%; left: 6%;"></div>
+    <div class="birthday-portal fixed rounded-full z-55" 
+         style="width: clamp(70px, 13vw, 160px); height: clamp(70px, 13vw, 160px); top: 10%; right: 8%; animation-delay: 2s;"></div>
+    <div class="birthday-portal fixed rounded-full z-55" 
+         style="width: clamp(80px, 14vw, 180px); height: clamp(80px, 14vw, 180px); bottom: 12%; left: 10%; animation-delay: 4s;"></div>
+    
+    <!-- العناصر الطائرة الاحتفالية (فوق النصوص) -->
+    <div class="birthday-floating fixed" 
+         style="font-size: clamp(2.5rem, 9vw, 6rem); top: 3%; right: 6%; color: #FF6B35; animation-delay: 1s;">🎂</div>
+    <div class="birthday-floating fixed" 
+         style="font-size: clamp(2rem, 7vw, 5rem); top: 8%; left: 5%; color: #FFD700; animation-delay: 2s;">🎉</div>
+    <div class="birthday-floating fixed" 
+         style="font-size: clamp(1.8rem, 6vw, 4.5rem); top: 60%; right: 8%; color: #DC143C; animation-delay: 3s;">🎈</div>
+    <div class="birthday-floating fixed" 
+         style="font-size: clamp(2.2rem, 8vw, 5.5rem); bottom: 20%; right: 15%; color: #4169E1; animation-delay: 4s;">🎁</div>
+    <div class="birthday-floating fixed" 
+         style="font-size: clamp(1.6rem, 5vw, 4rem); bottom: 40%; left: 12%; color: #FF1493; animation-delay: 5s;">⭐</div>
+    <div class="birthday-floating fixed" 
+         style="font-size: clamp(1.9rem, 7vw, 4.8rem); top: 35%; right: 25%; color: #FF8C00; animation-delay: 6s;">🥳</div>
+    <div class="birthday-floating fixed" 
+         style="font-size: clamp(1.7rem, 6vw, 4.2rem); bottom: 60%; right: 30%; color: #9370DB; animation-delay: 7s;">🌟</div>
     
     <!-- المحتوى الرئيسي -->
-    <div class="safe-container min-h-screen flex items-center justify-center relative z-10">
+    <div class="safe-container min-h-screen flex items-center justify-center relative z-20">
         <div class="w-full max-w-6xl mx-auto">
             <!-- الكارت الرئيسي -->
-            <div class="glass-morphism rounded-3xl p-6 sm:p-10 lg:p-16 hover-effect">
+            <div class="birthday-glass rounded-3xl p-6 sm:p-10 lg:p-16 birthday-hover">
                 
                 <!-- العنوان الرئيسي -->
                 <div class="text-center mb-8 sm:mb-12 lg:mb-16">
-                    <div class="floating-element mb-6" 
-                         style="font-size: clamp(3rem, 12vw, 6rem); animation-delay: 0s;">🌌</div>
+                    <div class="animate-birthday-bounce mb-6" 
+                         style="font-size: clamp(4rem, 15vw, 8rem);">🎂</div>
                     
-                    <h1 class="holographic-text text-crisp mb-6 sm:mb-8 leading-tight text-layout"
-                        style="font-size: clamp(1.8rem, 8vw, 4.5rem);"
-                        data-text="عيد ميلاد كوني سعيد">
-                        عيد ميلاد كوني سعيد
+                    <h1 class="birthday-holographic text-crisp mb-6 sm:mb-8 leading-tight text-layout"
+                        style="font-size: clamp(2rem, 9vw, 5rem);"
+                        data-text="عيد ميلاد سعيد">
+                        عيد ميلاد سعيد
                     </h1>
                     
-                    <div class="w-16 sm:w-24 lg:w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full animate-glow"></div>
+                    <div class="w-20 sm:w-28 lg:w-36 h-1.5 bg-gradient-to-r from-orange-400 via-red-500 to-blue-600 mx-auto rounded-full animate-glow"></div>
                 </div>
                 
-                <!-- اسم الأميرة -->
+                <!-- اسم المحتفى بها -->
                 <div class="text-center mb-8 sm:mb-12 lg:mb-16">
-                    <h2 class="text-white font-bold mb-4 sm:mb-6 animate-pulse-soft text-crisp text-layout"
-                        style="font-size: clamp(1.2rem, 6vw, 2.5rem);">
-                        الأميرة الكونية
+                    <h2 class="text-orange-200 font-bold mb-4 sm:mb-6 animate-pulse-soft text-crisp text-layout"
+                        style="font-size: clamp(1.4rem, 7vw, 3rem);">
+                        المهندسة المبدعة
                     </h2>
                     
-                    <h3 class="holographic-text font-title font-bold mb-6 sm:mb-8 text-crisp text-layout"
-                        style="font-size: clamp(1.5rem, 7vw, 3.5rem);"
+                    <h3 class="birthday-holographic font-title font-bold mb-6 sm:mb-8 text-crisp text-layout"
+                        style="font-size: clamp(1.8rem, 8vw, 4rem);"
                         data-text="شروق العمراني">
                         شروق العمراني
                     </h3>
                     
-                    <div class="typewriter text-cyan-300 max-w-full text-layout"
-                         style="font-size: clamp(0.9rem, 4vw, 1.5rem);">
-                        حاكمة مجرة التكنولوجيا ومُعلمة النجوم ✨
+                    <div class="birthday-typewriter text-yellow-300 max-w-full text-layout"
+                         style="font-size: clamp(1rem, 5vw, 1.8rem);">
+                        خبيرة تكنولوجيا المعلومات ومُعلمة ملهمة 🌟
                     </div>
                 </div>
                 
-                <!-- الشارات والألقاب -->
-                <div class="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4 mb-8 sm:mb-12 lg:mb-16">
-                    <span class="glass-morphism px-3 py-2 sm:px-4 sm:py-3 lg:px-6 lg:py-3 rounded-full text-cyan-300 hover-effect touch-button text-crisp"
-                          style="font-size: clamp(0.75rem, 3vw, 1rem);">
+                <!-- الشارات الاحتفالية -->
+                <div class="flex flex-wrap justify-center gap-3 sm:gap-4 lg:gap-5 mb-8 sm:mb-12 lg:mb-16">
+                    <span class="birthday-glass px-4 py-3 sm:px-5 sm:py-3 lg:px-7 lg:py-4 rounded-full text-orange-300 birthday-hover birthday-button text-crisp"
+                          style="font-size: clamp(0.8rem, 3.5vw, 1.1rem);">
                         💻 مهندسة IT
                     </span>
-                    <span class="glass-morphism px-3 py-2 sm:px-4 sm:py-3 lg:px-6 lg:py-3 rounded-full text-purple-300 hover-effect touch-button text-crisp"
-                          style="font-size: clamp(0.75rem, 3vw, 1rem);">
-                        👩‍🏫 مُدرِّسة نجوم
+                    <span class="birthday-glass px-4 py-3 sm:px-5 sm:py-3 lg:px-7 lg:py-4 rounded-full text-blue-300 birthday-hover birthday-button text-crisp"
+                          style="font-size: clamp(0.8rem, 3.5vw, 1.1rem);">
+                        👩‍🏫 معلمة مُلهمة
                     </span>
-                    <span class="glass-morphism px-3 py-2 sm:px-4 sm:py-3 lg:px-6 lg:py-3 rounded-full text-pink-300 hover-effect touch-button text-crisp"
-                          style="font-size: clamp(0.75rem, 3vw, 1rem);">
-                        🌟 أيقونة الإبداع
+                    <span class="birthday-glass px-4 py-3 sm:px-5 sm:py-3 lg:px-7 lg:py-4 rounded-full text-red-300 birthday-hover birthday-button text-crisp"
+                          style="font-size: clamp(0.8rem, 3.5vw, 1.1rem);">
+                        🌟 نجمة الإبداع
                     </span>
                 </div>
                 
-                <!-- العناصر التقنية -->
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-8 sm:mb-12 lg:mb-16">
-                    <div class="glass-morphism p-4 sm:p-6 rounded-2xl text-center hover-effect">
-                        <div class="mb-3" style="font-size: clamp(1.5rem, 6vw, 2.5rem);">💻</div>
-                        <p class="font-semibold text-blue-300 text-crisp" 
-                           style="font-size: clamp(0.7rem, 3vw, 0.9rem);">كوكب البرمجة</p>
+                <!-- العناصر المهنية الاحتفالية -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-7 mb-8 sm:mb-12 lg:mb-16">
+                    <div class="birthday-glass p-5 sm:p-7 rounded-2xl text-center birthday-hover">
+                        <div class="mb-3" style="font-size: clamp(2rem, 7vw, 3rem);">💻</div>
+                        <p class="font-semibold text-orange-300 text-crisp" 
+                           style="font-size: clamp(0.8rem, 3.5vw, 1rem);">عالم البرمجة</p>
                     </div>
-                    <div class="glass-morphism p-4 sm:p-6 rounded-2xl text-center hover-effect">
-                        <div class="mb-3" style="font-size: clamp(1.5rem, 6vw, 2.5rem);">🌐</div>
-                        <p class="font-semibold text-green-300 text-crisp"
-                           style="font-size: clamp(0.7rem, 3vw, 0.9rem);">محطة الويب</p>
+                    <div class="birthday-glass p-5 sm:p-7 rounded-2xl text-center birthday-hover">
+                        <div class="mb-3" style="font-size: clamp(2rem, 7vw, 3rem);">🌐</div>
+                        <p class="font-semibold text-blue-300 text-crisp"
+                           style="font-size: clamp(0.8rem, 3.5vw, 1rem);">تطوير الويب</p>
                     </div>
-                    <div class="glass-morphism p-4 sm:p-6 rounded-2xl text-center hover-effect">
-                        <div class="mb-3" style="font-size: clamp(1.5rem, 6vw, 2.5rem);">🎓</div>
-                        <p class="font-semibold text-purple-300 text-crisp"
-                           style="font-size: clamp(0.7rem, 3vw, 0.9rem);">أكاديمية النجوم</p>
+                    <div class="birthday-glass p-5 sm:p-7 rounded-2xl text-center birthday-hover">
+                        <div class="mb-3" style="font-size: clamp(2rem, 7vw, 3rem);">🎓</div>
+                        <p class="font-semibold text-red-300 text-crisp"
+                           style="font-size: clamp(0.8rem, 3.5vw, 1rem);">التعليم</p>
                     </div>
-                    <div class="glass-morphism p-4 sm:p-6 rounded-2xl text-center hover-effect">
-                        <div class="mb-3" style="font-size: clamp(1.5rem, 6vw, 2.5rem);">💎</div>
-                        <p class="font-semibold text-pink-300 text-crisp"
-                           style="font-size: clamp(0.7rem, 3vw, 0.9rem);">جوهرة التعليم</p>
+                    <div class="birthday-glass p-5 sm:p-7 rounded-2xl text-center birthday-hover">
+                        <div class="mb-3" style="font-size: clamp(2rem, 7vw, 3rem);">💎</div>
+                        <p class="font-semibold text-yellow-300 text-crisp"
+                           style="font-size: clamp(0.8rem, 3.5vw, 1rem);">الخبرة</p>
                     </div>
                 </div>
                 
-                <!-- رسالة الأحلام -->
-                <div class="glass-morphism rounded-3xl p-6 sm:p-8 lg:p-10 mb-8 sm:mb-12 lg:mb-16 hover-effect">
-                    <p class="text-gray-200 leading-relaxed text-center text-crisp text-layout"
-                       style="font-size: clamp(0.9rem, 4vw, 1.3rem); line-height: 1.6;">
-                        في هذا اليوم الكوني المقدس، تشع النجوم بنورك الأبدي يا حاكمة مجرة التكنولوجيا! 
-                        لتكن الأكوان المتوازية شاهدة على عبقريتك في عالم البرمجة والتعليم. 
-                        ستبقين منارة الحكمة في محيط اللانهاية! 🌟✨🚀
+                <!-- رسالة التهنئة الاحتفالية -->
+                <div class="birthday-glass rounded-3xl p-6 sm:p-9 lg:p-12 mb-8 sm:mb-12 lg:mb-16 birthday-hover">
+                    <p class="text-orange-100 leading-relaxed text-center text-crisp text-layout"
+                       style="font-size: clamp(1rem, 4.5vw, 1.5rem); line-height: 1.7;">
+                        في هذا اليوم المميز، نحتفل بعيد ميلاد نجمة التكنولوجيا والتعليم! 🎉
+                        تستحق شروق كل التقدير لعطائها اللامحدود في مجال IT والتعليم.
+                        عام جديد مليء بالنجاحات والإنجازات الرائعة! 🎂✨🎈
                     </p>
                 </div>
                 
-                <!-- أزرار التحكم الكونية -->
-                <div class="button-grid">
-                    <button onclick="triggerCosmicStorm()" 
-                            class="glass-morphism bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:from-cyan-400 hover:via-purple-400 hover:to-pink-400 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 lg:px-10 rounded-full hover-effect touch-button text-crisp"
-                            style="font-size: clamp(0.8rem, 3.5vw, 1.1rem);">
-                        🌌 العاصفة الكونية
+                <!-- أزرار التحكم الاحتفالية -->
+                <div class="birthday-button-grid">
+                    <button onclick="launchFireworks()" 
+                            class="birthday-glass bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 hover:from-orange-400 hover:via-red-400 hover:to-pink-400 text-white font-bold py-4 sm:py-5 px-7 sm:px-10 lg:px-12 rounded-full birthday-hover birthday-button text-crisp"
+                            style="font-size: clamp(0.9rem, 4vw, 1.2rem);">
+                        🎆 الألعاب النارية
                     </button>
-                    <button onclick="summonMysticCreatures()" 
-                            class="glass-morphism bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 hover:from-purple-500 hover:via-blue-500 hover:to-indigo-500 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 lg:px-10 rounded-full hover-effect touch-button text-crisp"
-                            style="font-size: clamp(0.8rem, 3.5vw, 1.1rem);">
-                        🐉 مخلوقات السعادة
+                    <button onclick="throwConfetti()" 
+                            class="birthday-glass bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 text-white font-bold py-4 sm:py-5 px-7 sm:px-10 lg:px-12 rounded-full birthday-hover birthday-button text-crisp"
+                            style="font-size: clamp(0.9rem, 4vw, 1.2rem);">
+                        🎊 إطلاق الكونفيتي
                     </button>
-                    <button onclick="openStarGate()" 
-                            class="glass-morphism bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 hover:from-green-400 hover:via-teal-400 hover:to-blue-400 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 lg:px-10 rounded-full hover-effect touch-button text-crisp"
-                            style="font-size: clamp(0.8rem, 3.5vw, 1.1rem);">
-                        🌀 بوابة النجوم
+                    <button onclick="celebrationMode()" 
+                            class="birthday-glass bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 hover:from-yellow-400 hover:via-orange-400 hover:to-red-400 text-white font-bold py-4 sm:py-5 px-7 sm:px-10 lg:px-12 rounded-full birthday-hover birthday-button text-crisp"
+                            style="font-size: clamp(0.9rem, 4vw, 1.2rem);">
+                        🥳 وضع الاحتفال
                     </button>
                 </div>
                 
@@ -529,7 +586,13 @@
         let mouseX = 0, mouseY = 0;
         let particleCount = 0;
         const isMobile = window.innerWidth < 768;
-        const maxParticles = isMobile ? 30 : 80;
+        const maxParticles = isMobile ? 40 : 100;
+        
+        // ألوان عيد الميلاد
+        const birthdayColors = [
+            '#FFD700', '#FF6B35', '#DC143C', '#4169E1', 
+            '#FF1493', '#FF8C00', '#9370DB', '#32CD32'
+        ];
         
         // تهيئة Three.js المحسّنة
         function initOptimizedThreeJS() {
@@ -547,14 +610,14 @@
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2));
             document.getElementById('three-container').appendChild(renderer.domElement);
             
-            createOptimizedGalaxy();
+            createBirthdayGalaxy();
             camera.position.z = 50;
             animate3D();
         }
         
-        // إنشاء مجرة محسّنة
-        function createOptimizedGalaxy() {
-            const particleCount = isMobile ? 2000 : 6000;
+        // إنشاء مجرة احتفالية
+        function createBirthdayGalaxy() {
+            const particleCount = isMobile ? 2500 : 7000;
             const geometry = new THREE.BufferGeometry();
             const vertices = new Float32Array(particleCount * 3);
             const colors = new Float32Array(particleCount * 3);
@@ -562,14 +625,16 @@
             for (let i = 0; i < particleCount; i++) {
                 const i3 = i * 3;
                 const angle = i * 0.01;
-                const radius = (i / 100) * Math.cos(angle * 0.1);
+                const radius = (i / 80) * Math.cos(angle * 0.1);
                 
-                vertices[i3] = Math.cos(angle) * radius + (Math.random() - 0.5) * 25;
-                vertices[i3 + 1] = (Math.random() - 0.5) * 12;
-                vertices[i3 + 2] = Math.sin(angle) * radius + (Math.random() - 0.5) * 25;
+                vertices[i3] = Math.cos(angle) * radius + (Math.random() - 0.5) * 30;
+                vertices[i3 + 1] = (Math.random() - 0.5) * 15;
+                vertices[i3 + 2] = Math.sin(angle) * radius + (Math.random() - 0.5) * 30;
                 
-                const hue = (angle / (Math.PI * 2)) % 1;
-                const color = new THREE.Color().setHSL(hue, 0.7, 0.6);
+                // ألوان احتفالية
+                const colorIndex = Math.floor(Math.random() * birthdayColors.length);
+                const hex = birthdayColors[colorIndex];
+                const color = new THREE.Color(hex);
                 colors[i3] = color.r;
                 colors[i3 + 1] = color.g;
                 colors[i3 + 2] = color.b;
@@ -579,10 +644,10 @@
             geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
             
             const material = new THREE.PointsMaterial({
-                size: isMobile ? 0.6 : 1,
+                size: isMobile ? 0.8 : 1.3,
                 vertexColors: true,
                 transparent: true,
-                opacity: 0.7,
+                opacity: 0.8,
                 blending: THREE.AdditiveBlending
             });
             
@@ -595,32 +660,33 @@
             animationId = requestAnimationFrame(animate3D);
             
             if (galaxyMesh) {
-                galaxyMesh.rotation.z += 0.0008;
-                galaxyMesh.rotation.y += 0.0003;
+                galaxyMesh.rotation.z += 0.001;
+                galaxyMesh.rotation.y += 0.0004;
             }
             
             renderer.render(scene, camera);
         }
         
-        // إنشاء حقل النجوم
-        function createStarField() {
+        // إنشاء نجوم احتفالية
+        function createBirthdayStars() {
             const starField = document.getElementById('starfield');
-            const starCount = isMobile ? 40 : 80;
+            const starCount = isMobile ? 50 : 100;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
-                star.className = 'star';
+                star.className = 'birthday-star';
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
-                star.style.width = star.style.height = (Math.random() * 2 + 1) + 'px';
-                star.style.animationDelay = Math.random() * 4 + 's';
-                star.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                star.style.width = star.style.height = (Math.random() * 3 + 2) + 'px';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                star.style.background = birthdayColors[Math.floor(Math.random() * birthdayColors.length)];
                 starField.appendChild(star);
             }
         }
         
-        // مؤشر كوني محسّن
-        const cursor = document.getElementById('cosmicCursor');
+        // مؤشر احتفالي محسّن
+        const cursor = document.getElementById('birthdayCursor');
         
         function updateCursor(e) {
             if (!cursor || isMobile) return;
@@ -628,30 +694,32 @@
             mouseX = e.clientX;
             mouseY = e.clientY;
             
-            cursor.style.left = mouseX - 10 + 'px';
-            cursor.style.top = mouseY - 10 + 'px';
+            cursor.style.left = mouseX - 12 + 'px';
+            cursor.style.top = mouseY - 12 + 'px';
             
-            // أثر المؤشر المحسّن
-            if (Math.random() > 0.85) {
-                createOptimizedTrail(mouseX, mouseY);
+            // أثر المؤشر الاحتفالي
+            if (Math.random() > 0.8) {
+                createBirthdayTrail(mouseX, mouseY);
             }
         }
         
-        function createOptimizedTrail(x, y) {
+        function createBirthdayTrail(x, y) {
             if (particleCount >= maxParticles) return;
             
             const trail = document.createElement('div');
+            const color = birthdayColors[Math.floor(Math.random() * birthdayColors.length)];
             trail.style.cssText = `
                 position: fixed;
                 left: ${x}px;
                 top: ${y}px;
-                width: 3px;
-                height: 3px;
-                background: hsl(${Math.random() * 360}, 60%, 70%);
+                width: 4px;
+                height: 4px;
+                background: ${color};
                 border-radius: 50%;
                 pointer-events: none;
                 z-index: 9999;
-                animation: trail-fade 0.8s ease-out forwards;
+                animation: trail-fade 1s ease-out forwards;
+                box-shadow: 0 0 8px ${color};
             `;
             
             document.body.appendChild(trail);
@@ -662,28 +730,28 @@
                     trail.remove();
                     particleCount--;
                 }
-            }, 800);
+            }, 1000);
         }
         
-        // جسيمات عائمة محسّنة
-        function createFloatingParticle() {
+        // جسيمات احتفالية عائمة
+        function createBirthdayParticle() {
             if (particleCount >= maxParticles) return;
             
             const particle = document.createElement('div');
-            particle.className = 'particle';
+            particle.className = 'birthday-particle';
             
-            const size = Math.random() * 4 + 2;
-            const hue = Math.random() * 360;
+            const size = Math.random() * 5 + 3;
+            const color = birthdayColors[Math.floor(Math.random() * birthdayColors.length)];
             
             particle.style.cssText = `
                 left: ${Math.random() * 100}vw;
                 width: ${size}px;
                 height: ${size}px;
-                background: hsl(${hue}, 60%, 70%);
-                --drift: ${(Math.random() - 0.5) * 150}px;
-                animation-duration: ${Math.random() * 8 + 12}s;
+                background: ${color};
+                --drift: ${(Math.random() - 0.5) * 200}px;
+                animation-duration: ${Math.random() * 6 + 10}s;
                 animation-delay: ${Math.random() * 2}s;
-                box-shadow: 0 0 ${size * 1.5}px hsl(${hue}, 60%, 70%);
+                box-shadow: 0 0 ${size * 2}px ${color};
             `;
             
             document.getElementById('particles-container').appendChild(particle);
@@ -694,47 +762,47 @@
                     particle.remove();
                     particleCount--;
                 }
-            }, 15000);
+            }, 12000);
         }
         
-        // تأثيرات التفاعل المحسّنة
-        function triggerCosmicStorm() {
-            const explosionCount = isMobile ? 15 : 25;
-            for (let i = 0; i < explosionCount; i++) {
+        // إطلاق الألعاب النارية
+        function launchFireworks() {
+            const fireworkCount = isMobile ? 8 : 15;
+            for (let i = 0; i < fireworkCount; i++) {
                 setTimeout(() => {
-                    createCosmicExplosion();
-                }, i * 40);
+                    createFireworkExplosion();
+                }, i * 200);
             }
             
-            // تأثير اهتزاز خفيف
-            document.body.style.animation = 'shake 0.3s ease-in-out 2';
+            // تأثير اهتزاز احتفالي
+            document.body.style.animation = 'birthday-bounce 0.5s ease-in-out 2';
             setTimeout(() => {
                 document.body.style.animation = '';
-            }, 600);
+            }, 1000);
         }
         
-        function createCosmicExplosion() {
+        function createFireworkExplosion() {
             const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight;
-            const sparkCount = isMobile ? 8 : 12;
+            const y = Math.random() * (window.innerHeight / 2);
+            const sparkCount = isMobile ? 12 : 20;
             
             for (let i = 0; i < sparkCount; i++) {
                 const spark = document.createElement('div');
                 const angle = (i * (360 / sparkCount)) * Math.PI / 180;
-                const distance = Math.random() * 100 + 30;
-                const hue = Math.random() * 360;
+                const distance = Math.random() * 120 + 60;
+                const color = birthdayColors[Math.floor(Math.random() * birthdayColors.length)];
                 
                 spark.style.cssText = `
                     position: fixed;
                     left: ${x}px;
                     top: ${y}px;
-                    width: 3px;
-                    height: 3px;
-                    background: hsl(${hue}, 100%, 60%);
+                    width: 4px;
+                    height: 4px;
+                    background: ${color};
                     border-radius: 50%;
                     pointer-events: none;
                     z-index: 10000;
-                    box-shadow: 0 0 8px hsl(${hue}, 100%, 60%);
+                    box-shadow: 0 0 12px ${color};
                 `;
                 
                 const endX = Math.cos(angle) * distance;
@@ -744,7 +812,7 @@
                     { transform: 'translate(0, 0) scale(1)', opacity: 1 },
                     { transform: `translate(${endX}px, ${endY}px) scale(0)`, opacity: 0 }
                 ], {
-                    duration: 800 + Math.random() * 400,
+                    duration: 1200 + Math.random() * 600,
                     easing: 'ease-out'
                 }).onfinish = () => spark.remove();
                 
@@ -752,117 +820,75 @@
             }
         }
         
-        function summonMysticCreatures() {
-            const creatures = ['🐉', '🦄', '🧚‍♀️', '🦋', '⭐', '💫', '🌟', '✨'];
-            const creatureCount = isMobile ? 5 : 8;
+        // إطلاق الكونفيتي
+        function throwConfetti() {
+            const confettiCount = isMobile ? 50 : 100;
             
-            for (let i = 0; i < creatureCount; i++) {
+            for (let i = 0; i < confettiCount; i++) {
                 setTimeout(() => {
-                    const creature = document.createElement('div');
-                    const emoji = creatures[Math.floor(Math.random() * creatures.length)];
-                    
-                    creature.style.cssText = `
-                        position: fixed;
-                        font-size: ${Math.random() * 1.5 + 1.5}rem;
-                        left: -80px;
-                        top: ${Math.random() * window.innerHeight}px;
-                        z-index: 9999;
-                        pointer-events: none;
-                        filter: hue-rotate(${Math.random() * 360}deg) drop-shadow(0 0 15px currentColor);
-                    `;
-                    creature.textContent = emoji;
-                    
-                    creature.animate([
-                        { transform: 'translateX(-80px) rotate(0deg)', opacity: 0 },
-                        { transform: `translateX(${window.innerWidth / 2}px) rotate(180deg) scale(1.3)`, opacity: 1, offset: 0.5 },
-                        { transform: `translateX(${window.innerWidth + 80}px) rotate(360deg)`, opacity: 0 }
-                    ], {
-                        duration: 3500,
-                        easing: 'ease-in-out'
-                    }).onfinish = () => creature.remove();
-                    
-                    document.body.appendChild(creature);
-                }, i * 150);
+                    createConfettiPiece();
+                }, i * 20);
             }
         }
         
-        function openStarGate() {
-            const gate = document.createElement('div');
-            gate.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                width: 15px;
-                height: 15px;
-                border-radius: 50%;
-                background: conic-gradient(from 0deg, #ff0080, #8000ff, #0080ff, #00ff80, #ffff00, #ff8000, #ff0080);
-                transform: translate(-50%, -50%);
-                z-index: 10000;
-                pointer-events: none;
+        function createConfettiPiece() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti-piece';
+            
+            const shapes = ['square', 'circle', 'triangle'];
+            const shape = shapes[Math.floor(Math.random() * shapes.length)];
+            const color = birthdayColors[Math.floor(Math.random() * birthdayColors.length)];
+            
+            confetti.style.cssText = `
+                left: ${Math.random() * 100}vw;
+                background: ${color};
+                animation-duration: ${Math.random() * 2 + 3}s;
+                animation-delay: ${Math.random() * 1}s;
             `;
             
-            const maxSize = isMobile ? '250px' : '350px';
+            if (shape === 'circle') {
+                confetti.style.borderRadius = '50%';
+            } else if (shape === 'triangle') {
+                confetti.style.width = '0';
+                confetti.style.height = '0';
+                confetti.style.background = 'transparent';
+                confetti.style.borderLeft = '6px solid transparent';
+                confetti.style.borderRight = '6px solid transparent';
+                confetti.style.borderBottom = `12px solid ${color}`;
+            }
             
-            gate.animate([
-                { width: '15px', height: '15px', opacity: 0 },
-                { width: maxSize, height: maxSize, opacity: 1, offset: 0.5 },
-                { width: '15px', height: '15px', opacity: 0 }
-            ], {
-                duration: 2500,
-                easing: 'ease-out'
-            }).onfinish = () => gate.remove();
+            document.getElementById('confetti-container').appendChild(confetti);
             
-            document.body.appendChild(gate);
-            
-            // إطلاق مخلوقات من البوابة
             setTimeout(() => {
-                const creatureCount = isMobile ? 8 : 12;
-                for (let i = 0; i < creatureCount; i++) {
-                    setTimeout(() => createStarCreature(), i * 80);
+                if (confetti.parentNode) {
+                    confetti.remove();
                 }
-            }, 800);
+            }, 5000);
         }
         
-        function createStarCreature() {
-            const creatures = ['🧚‍♀️', '💫', '⭐', '✨', '🌟', '💎', '🔮'];
-            const creature = document.createElement('div');
+        // وضع الاحتفال الكامل
+        function celebrationMode() {
+            // إطلاق كل شيء معاً!
+            launchFireworks();
+            setTimeout(() => throwConfetti(), 500);
             
-            creature.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                font-size: 1.2rem;
-                z-index: 9999;
-                pointer-events: none;
-                transform: translate(-50%, -50%);
-            `;
-            creature.textContent = creatures[Math.floor(Math.random() * creatures.length)];
+            // إضافة تأثيرات إضافية
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createBirthdayParticle();
+                }, i * 100);
+            }
             
-            const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 200 + 80;
-            const endX = Math.cos(angle) * distance;
-            const endY = Math.sin(angle) * distance;
-            
-            creature.animate([
-                { transform: 'translate(-50%, -50%) scale(0) rotate(0deg)', opacity: 0 },
-                { transform: 'translate(-50%, -50%) scale(1.3) rotate(180deg)', opacity: 1, offset: 0.3 },
-                { transform: `translate(${endX}px, ${endY}px) scale(0) rotate(360deg)`, opacity: 0 }
-            ], {
-                duration: 1800,
-                easing: 'ease-out'
-            }).onfinish = () => creature.remove();
-            
-            document.body.appendChild(creature);
+            // تغيير ألوان الخلفية مؤقتاً
+            document.body.style.animation = 'birthday-shimmer 2s ease-in-out 3';
+            setTimeout(() => {
+                document.body.style.animation = '';
+            }, 6000);
         }
         
-        // إضافة أنيميشن الاهتزاز والتلاشي
+        // إضافة أنيميشن التلاشي
         const dynamicStyles = document.createElement('style');
         dynamicStyles.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                25% { transform: translateX(-1px); }
-                75% { transform: translateX(1px); }
-            }
             @keyframes trail-fade {
                 to { opacity: 0; transform: scale(0); }
             }
@@ -872,7 +898,7 @@
         // تهيئة التطبيق
         function initApp() {
             // إنشاء العناصر الأساسية
-            createStarField();
+            createBirthdayStars();
             
             // تهيئة Three.js مع معالجة الأخطاء
             try {
@@ -882,25 +908,30 @@
             }
             
             // إنشاء جسيمات دورية
-            const particleInterval = isMobile ? 1200 : 600;
+            const particleInterval = isMobile ? 1500 : 800;
             setInterval(() => {
                 if (particleCount < maxParticles) {
-                    createFloatingParticle();
+                    createBirthdayParticle();
                 }
             }, particleInterval);
             
-            // تأثيرات تلقائية
+            // تأثيرات تلقائية احتفالية
             setInterval(() => {
-                if (Math.random() > 0.92) {
-                    triggerCosmicStorm();
+                if (Math.random() > 0.9) {
+                    launchFireworks();
                 }
-            }, 18000);
+            }, 20000);
             
             setInterval(() => {
-                if (Math.random() > 0.88) {
-                    summonMysticCreatures();
+                if (Math.random() > 0.85) {
+                    throwConfetti();
                 }
             }, 25000);
+            
+            // احتفال تلقائي كل دقيقة
+            setInterval(() => {
+                celebrationMode();
+            }, 60000);
         }
         
         // معالجة الأحداث
@@ -938,6 +969,13 @@
                     animate3D();
                 }
             }
+        });
+        
+        // احتفال ترحيبي عند التحميل
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                celebrationMode();
+            }, 2000);
         });
     </script>
 </body>
