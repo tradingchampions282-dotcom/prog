@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 عالم شروق السحري - مجرة الإبداع 🌟</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body {
+            overflow: hidden;
+            background: #000;
+            cursor: none;
+        }
+        
+        .cosmic-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #fff 30%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
+        
+        .cosmic-trail {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #00ffff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            animation: trail-fade 1s ease-out forwards;
+        }
+        
+        @keyframes trail-fade {
+            to { opacity: 0; transform: scale(0); }
+        }
+        
+        .holographic-text {
+            background: linear-gradient(45deg, #ff0080, #00ffff, #ff0080, #00ffff, #ff0080);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: hologram 3s ease-in-out infinite, text-glow 2s ease-in-out infinite;
+            font-family: 'Amiri', serif;
+        }
+        
+        @keyframes hologram {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes text-glow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 10px #ff0080) drop-shadow(0 0 20px #00ffff);
+                transform: scale(1);
+            }
+            50% { 
+                filter: drop-shadow(0 0 20px #ff0080) drop-shadow(0 0 40px #00ffff);
+                transform: scale(1.02);
+            }
+        }
+        
+        .magical-portal {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, 
+                #ff0080, #8000ff, #0080ff, #00ff80, 
+                #ffff00, #ff8000, #ff0080);
+            animation: portal-spin 4s linear infinite, portal-pulse 2s ease-in-out infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes portal-spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes portal-pulse {
+            0%, 100% { transform: scale(1); filter: blur(2px); }
+            50% { transform: scale(1.1); filter: blur(0px); }
+        }
+        
+        .floating-castle {
+            position: absolute;
+            font-size: 8rem;
+            animation: castle-float 8s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
+        }
+        
+        @keyframes castle-float {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.8;
+            }
+            25% { 
+                transform: translateY(-30px) rotate(2deg) scale(1.05);
+                opacity: 1;
+            }
+            50% { 
+                transform: translateY(-50px) rotate(0deg) scale(1.1);
+                opacity: 0.9;
+            }
+            75% { 
+                transform: translateY(-30px) rotate(-2deg) scale(1.05);
+                opacity: 1;
+            }
+        }
+        
+        .cosmic-creature {
+            position: absolute;
+            font-size: 4rem;
+            animation: creature-dance 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px currentColor);
+        }
+        
+        @keyframes creature-dance {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(50px) rotate(10deg); }
+            50% { transform: translateX(0) rotate(0deg) scale(1.2); }
+            75% { transform: translateX(-50px) rotate(-10deg); }
+        }
+        
+        .stardust-shower {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: stardust-fall linear infinite;
+            box-shadow: 0 0 10px currentColor;
+        }
+        
+        @keyframes stardust-fall {
+            0% { 
+                transform: translateY(-100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% { 
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(100vh) translateX(var(--drift)) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        .quantum-text {
+            animation: quantum-phase 4s ease-in-out infinite;
+            font-weight: bold;
+        }
+        
+        @keyframes quantum-phase {
+            0%, 100% { 
+                opacity: 1; 
+                transform: translateZ(0) rotateY(0deg);
+                color: #ffffff;
+            }
+            25% { 
+                opacity: 0.7; 
+                transform: translateZ(20px) rotateY(90deg);
+                color: #ff0080;
+            }
+            50% { 
+                opacity: 0.5; 
+                transform: translateZ(40px) rotateY(180deg);
+                color: #00ffff;
+            }
+            75% { 
+                opacity: 0.7; 
+                transform: translateZ(20px) rotateY(270deg);
+                color: #80ff00;
+            }
+        }
+        
+        .energy-orb {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(255, 255, 255, 1), 
+                rgba(0, 255, 255, 0.8), 
+                rgba(255, 0, 128, 0.6),
+                transparent);
+            animation: orb-float 5s ease-in-out infinite, orb-glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes orb-float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, -50px) rotate(90deg); }
+            50% { transform: translate(200px, 0) rotate(180deg); }
+            75% { transform: translate(100px, 50px) rotate(270deg); }
+        }
+        
+        @keyframes orb-glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.5),
+                           0 0 40px rgba(255, 0, 128, 0.3),
+                           0 0 60px rgba(255, 255, 255, 0.2);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(0, 255, 255, 0.8),
+                           0 0 80px rgba(255, 0, 128, 0.6),
+                           0 0 120px rgba(255, 255, 255, 0.4);
+            }
+        }
+        
+        .dimensional-rift {
+            position: absolute;
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, #ff0080, #00ffff, #ff0080, transparent);
+            animation: rift-expand 3s ease-in-out infinite;
+            transform-origin: center;
+        }
+        
+        @keyframes rift-expand {
+            0%, 100% { 
+                transform: scaleX(1) scaleY(1);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: scaleX(3) scaleY(20);
+                opacity: 1;
+            }
+        }
+        
+        .reality-glitch {
+            animation: glitch 0.3s ease-in-out infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { 
+                transform: translate(0);
+                filter: hue-rotate(0deg);
+            }
+            20% { 
+                transform: translate(-2px, 2px);
+                filter: hue-rotate(90deg);
+            }
+            40% { 
+                transform: translate(2px, -2px);
+                filter: hue-rotate(180deg);
+            }
+            60% { 
+                transform: translate(-2px, -2px);
+                filter: hue-rotate(270deg);
+            }
+            80% { 
+                transform: translate(2px, 2px);
+                filter: hue-rotate(360deg);
+            }
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            border-right: 3px solid #ff0080;
+            white-space: nowrap;
+            animation: typing 4s steps(40) 1s forwards, blink 1s infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        
+        #three-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .ui-overlay {
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .ui-overlay * {
+            pointer-events: auto;
+        }
+        
+        .metamorphosis {
+            animation: metamorphosis 8s ease-in-out infinite;
+        }
+        
+        @keyframes metamorphosis {
+            0% { 
+                transform: rotate(0deg) scale(1);
+                border-radius: 0%;
+            }
+            25% { 
+                transform: rotate(90deg) scale(1.2);
+                border-radius: 25%;
+            }
+            50% { 
+                transform: rotate(180deg) scale(0.8);
+                border-radius: 50%;
+            }
+            75% { 
+                transform: rotate(270deg) scale(1.4);
+                border-radius: 25%;
+            }
+            100% { 
+                transform: rotate(360deg) scale(1);
+                border-radius: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cosmic Cursor -->
+    <div class="cosmic-cursor" id="cosmicCursor"></div>
+    
+    <!-- Three.js 3D Background -->
+    <div id="three-container"></div>
+    
+    <!-- Magical Portals -->
+    <div class="magical-portal" style="top: 10%; left: 10%;"></div>
+    <div class="magical-portal" style="top: 20%; right: 15%; animation-delay: 1s;"></div>
+    <div class="magical-portal" style="bottom: 15%; left: 20%; animation-delay: 2s;"></div>
+    
+    <!-- Floating Castles -->
+    <div class="floating-castle" style="top: 5%; right: 10%; animation-delay: 0.5s;">🏰</div>
+    <div class="floating-castle" style="bottom: 10%; right: 20%; animation-delay: 2s; font-size: 6rem;">🌟</div>
+    
+    <!-- Cosmic Creatures -->
+    <div class="cosmic-creature" style="top: 15%; left: 30%; color: #ff0080; animation-delay: 1s;">👾</div>
+    <div class="cosmic-creature" style="top: 60%; right: 30%; color: #00ffff; animation-delay: 2s;">🛸</div>
+    <div class="cosmic-creature" style="bottom: 30%; left: 40%; color: #80ff00; animation-delay: 3s;">🚀</div>
+    
+    <!-- Energy Orbs -->
+    <div class="energy-orb" style="top: 25%; left: 60%; animation-delay: 0s;"></div>
+    <div class="energy-orb" style="top: 70%; right: 40%; animation-delay: 1s;"></div>
+    <div class="energy-orb" style="bottom: 40%; left: 20%; animation-delay: 2s;"></div>
+    
+    <!-- Dimensional Rifts -->
+    <div class="dimensional-rift" style="top: 30%; left: 50%; transform: rotate(45deg);"></div>
+    <div class="dimensional-rift" style="top: 80%; right: 30%; transform: rotate(-30deg); animation-delay: 1s;"></div>
+    
+    <!-- Main UI Overlay -->
+    <div class="ui-overlay min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-6xl w-full">
+            <!-- Central Cosmic Card -->
+            <div class="relative">
+                <!-- Holographic Background -->
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-pink-900/20 backdrop-blur-lg rounded-3xl border border-cyan-400/30 metamorphosis"></div>
+                
+                <!-- Main Content -->
+                <div class="relative p-8 md:p-16 text-center">
+                    <!-- Cosmic Header -->
+                    <div class="mb-12">
+                        <div class="text-8xl md:text-9xl mb-6 floating-castle" style="animation-delay: 0s;">🌌</div>
+                        <h1 class="holographic-text text-4xl md:text-7xl font-bold mb-6">
+                            عيد ميلاد كوني سعيد
+                        </h1>
+                        <div class="w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full glow-pulse"></div>
+                    </div>
+                    
+                    <!-- Quantum Name Display -->
+                    <div class="mb-12">
+                        <h2 class="quantum-text text-3xl md:text-5xl mb-6 text-white">
+                            الأميرة الكونية شروق العمراني
+                        </h2>
+                        <div class="typing-animation text-xl md:text-2xl text-cyan-300 mx-auto" style="max-width: 600px;">
+                            حاكمة مجرة التكنولوجيا ومُعلمة النجوم ✨
+                        </div>
+                    </div>
+                    
+                    <!-- Cosmic Achievements -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                        <div class="reality-glitch bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-6 rounded-2xl border border-blue-400/30">
+                            <div class="text-4xl mb-3">🌟</div>
+                            <p class="text-blue-300 font-bold">كوكب البرمجة</p>
+                        </div>
+                        <div class="reality-glitch bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-6 rounded-2xl border border-purple-400/30" style="animation-delay: 0.1s;">
+                            <div class="text-4xl mb-3">🚀</div>
+                            <p class="text-purple-300 font-bold">محطة الويب</p>
+                        </div>
+                        <div class="reality-glitch bg-gradient-to-br from-pink-500/20 to-red-500/20 p-6 rounded-2xl border border-pink-400/30" style="animation-delay: 0.2s;">
+                            <div class="text-4xl mb-3">🎓</div>
+                            <p class="text-pink-300 font-bold">أكاديمية المعرفة</p>
+                        </div>
+                        <div class="reality-glitch bg-gradient-to-br from-green-500/20 to-cyan-500/20 p-6 rounded-2xl border border-green-400/30" style="animation-delay: 0.3s;">
+                            <div class="text-4xl mb-3">💎</div>
+                            <p class="text-green-300 font-bold">جوهرة التعليم</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Mystical Message -->
+                    <div class="bg-gradient-to-r from-indigo-900/30 via-purple-900/30 to-pink-900/30 backdrop-blur-md rounded-3xl p-8 mb-12 border border-indigo-400/20">
+                        <p class="text-xl md:text-2xl text-gray-200 leading-relaxed quantum-text">
+                            في هذا اليوم الكوني المقدس، تشع النجوم بنورك الأبدي يا حاكمة مجرة التكنولوجيا! 
+                            لتكن الأكوان المتوازية شاهدة على عبقريتك في عالم البرمجة والتعليم. 
+                            ستبقين منارة الحكمة في محيط اللانهاية! 🌟✨🚀
+                        </p>
+                    </div>
+                    
+                    <!-- Cosmic Controls -->
+                    <div class="space-y-4">
+                        <button onclick="triggerCosmicEvent()" class="bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:from-cyan-400 hover:via-purple-400 hover:to-pink-400 text-white font-bold py-4 px-8 rounded-full transform hover:scale-110 transition-all duration-300 shadow-2xl mx-2 mb-4 reality-glitch">
+                            🌌 إطلاق العاصفة الكونية
+                        </button>
+                        <button onclick="summonDragons()" class="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 hover:from-purple-500 hover:via-blue-500 hover:to-indigo-500 text-white font-bold py-4 px-8 rounded-full transform hover:scale-110 transition-all duration-300 shadow-2xl mx-2 mb-4 reality-glitch" style="animation-delay: 0.1s;">
+                            🐉 استدعاء تنانين السعادة
+                        </button>
+                        <button onclick="openDimensionalGate()" class="bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 hover:from-green-400 hover:via-teal-400 hover:to-blue-400 text-white font-bold py-4 px-8 rounded-full transform hover:scale-110 transition-all duration-300 shadow-2xl mx-2 mb-4 reality-glitch" style="animation-delay: 0.2s;">
+                            🌀 فتح بوابة التمنيات
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Three.js 3D Galaxy Background
+        let scene, camera, renderer, stars = [], galaxyParticles = [];
+        
+        function initThreeJS() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            document.getElementById('three-container').appendChild(renderer.domElement);
+            
+            // Create animated galaxy
+            createGalaxy();
+            createFloatingCrystals();
+            createNebula();
+            
+            camera.position.z = 50;
+            animate3D();
+        }
+        
+        function createGalaxy() {
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const colors = [];
+            
+            for (let i = 0; i < 10000; i++) {
+                // Spiral galaxy pattern
+                const angle = i * 0.01;
+                const radius = (i / 100) * Math.cos(angle * 0.1);
+                
+                vertices.push(
+                    Math.cos(angle) * radius + (Math.random() - 0.5) * 20,
+                    (Math.random() - 0.5) * 10,
+                    Math.sin(angle) * radius + (Math.random() - 0.5) * 20
+                );
+                
+                // Color gradient
+                const hue = (angle / (Math.PI * 2)) % 1;
+                const color = new THREE.Color().setHSL(hue, 0.8, 0.6);
+                colors.push(color.r, color.g, color.b);
+            }
+            
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+            
+            const material = new THREE.PointsMaterial({
+                size: 0.5,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            const galaxy = new THREE.Points(geometry, material);
+            scene.add(galaxy);
+            galaxyParticles.push(galaxy);
+        }
+        
+        function createFloatingCrystals() {
+            for (let i = 0; i < 20; i++) {
+                const geometry = new THREE.OctahedronGeometry(Math.random() * 2 + 1);
+                const material = new THREE.MeshBasicMaterial({
+                    color: new THREE.Color().setHSL(Math.random(), 0.8, 0.6),
+                    transparent: true,
+                    opacity: 0.6,
+                    wireframe: true
+                });
+                
+                const crystal = new THREE.Mesh(geometry, material);
+                crystal.position.set(
+                    (Math.random() - 0.5) * 100,
+                    (Math.random() - 0.5) * 100,
+                    (Math.random() - 0.5) * 100
+                );
+                
+                crystal.userData = {
+                    rotationSpeed: Math.random() * 0.02 + 0.01,
+                    floatSpeed: Math.random() * 0.01 + 0.005
+                };
+                
+                scene.add(crystal);
+                stars.push(crystal);
+            }
+        }
+        
+        function createNebula() {
+            const geometry = new THREE.PlaneGeometry(200, 200);
+            const material = new THREE.ShaderMaterial({
+                uniforms: {
+                    time: { value: 0 }
+                },
+                vertexShader: `
+                    void main() {
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    uniform float time;
+                    void main() {
+                        vec2 uv = gl_FragCoord.xy / vec2(1920.0, 1080.0);
+                        vec3 color = vec3(
+                            sin(time + uv.x * 10.0) * 0.5 + 0.5,
+                            sin(time + uv.y * 10.0) * 0.5 + 0.5,
+                            sin(time + (uv.x + uv.y) * 5.0) * 0.5 + 0.5
+                        );
+                        gl_FragColor = vec4(color * 0.1, 0.1);
+                    }
+                `,
+                transparent: true
+            });
+            
+            const nebula = new THREE.Mesh(geometry, material);
+            nebula.position.z = -50;
+            scene.add(nebula);
+        }
+        
+        function animate3D() {
+            requestAnimationFrame(animate3D);
+            
+            // Rotate galaxy
+            galaxyParticles.forEach(galaxy => {
+                galaxy.rotation.z += 0.001;
+                galaxy.rotation.y += 0.0005;
+            });
+            
+            // Animate crystals
+            stars.forEach(crystal => {
+                crystal.rotation.x += crystal.userData.rotationSpeed;
+                crystal.rotation.y += crystal.userData.rotationSpeed;
+                crystal.position.y += Math.sin(Date.now() * crystal.userData.floatSpeed) * 0.01;
+            });
+            
+            // Update nebula
+            const nebula = scene.children.find(child => child.material && child.material.uniforms);
+            if (nebula) {
+                nebula.material.uniforms.time.value = Date.now() * 0.001;
+            }
+            
+            renderer.render(scene, camera);
+        }
+        
+        // Cosmic Cursor Trail
+        let mouseX = 0, mouseY = 0;
+        const cursor = document.getElementById('cosmicCursor');
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cursor.style.left = mouseX - 10 + 'px';
+            cursor.style.top = mouseY - 10 + 'px';
+            
+            // Create trailing particles
+            if (Math.random() > 0.7) {
+                createTrailParticle(mouseX, mouseY);
+            }
+        });
+        
+        function createTrailParticle(x, y) {
+            const trail = document.createElement('div');
+            trail.className = 'cosmic-trail';
+            trail.style.left = x + 'px';
+            trail.style.top = y + 'px';
+            trail.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            document.body.appendChild(trail);
+            
+            setTimeout(() => trail.remove(), 1000);
+        }
+        
+        // Stardust Shower
+        function createStardust() {
+            const star = document.createElement('div');
+            star.className = 'stardust-shower';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.setProperty('--drift', (Math.random() - 0.5) * 200 + 'px');
+            star.style.animationDuration = Math.random() * 3 + 2 + 's';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            star.style.background = `hsl(${Math.random() * 360}, 80%, 70%)`;
+            
+            document.body.appendChild(star);
+            setTimeout(() => star.remove(), 6000);
+        }
+        
+        // Cosmic Events
+        function triggerCosmicEvent() {
+            // Create massive explosion of particles
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    createCosmicExplosion(window.innerWidth / 2, window.innerHeight / 2);
+                }, i * 20);
+            }
+            
+            // Reality glitch effect
+            document.body.style.animation = 'glitch 0.1s ease-in-out 20';
+            setTimeout(() => {
+                document.body.style.animation = '';
+            }, 2000);
+        }
+        
+        function createCosmicExplosion(x, y) {
+            const explosion = document.createElement('div');
+            explosion.style.position = 'fixed';
+            explosion.style.left = x + 'px';
+            explosion.style.top = y + 'px';
+            explosion.style.width = '4px';
+            explosion.style.height = '4px';
+            explosion.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            explosion.style.borderRadius = '50%';
+            explosion.style.zIndex = '10000';
+            explosion.style.pointerEvents = 'none';
+            
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 500 + 200;
+            const endX = Math.cos(angle) * velocity;
+            const endY = Math.sin(angle) * velocity;
+            
+            explosion.style.animation = `cosmic-explosion 2s ease-out forwards`;
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes cosmic-explosion {
+                    to {
+                        transform: translate(${endX}px, ${endY}px) scale(0);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(explosion);
+            
+            setTimeout(() => {
+                explosion.remove();
+                style.remove();
+            }, 2000);
+        }
+        
+        function summonDragons() {
+            const dragons = ['🐉', '🐲', '🦄', '🌟', '✨'];
+            
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const dragon = document.createElement('div');
+                    dragon.style.position = 'fixed';
+                    dragon.style.fontSize = '4rem';
+                    dragon.style.left = '-100px';
+                    dragon.style.top = Math.random() * window.innerHeight + 'px';
+                    dragon.style.zIndex = '9999';
+                    dragon.style.pointerEvents = 'none';
+                    dragon.textContent = dragons[Math.floor(Math.random() * dragons.length)];
+                    dragon.style.animation = 'dragon-flight 4s ease-in-out forwards';
+                    dragon.style.filter = `hue-rotate(${Math.random() * 360}deg) drop-shadow(0 0 20px currentColor)`;
+                    
+                    const dragonStyle = document.createElement('style');
+                    dragonStyle.textContent = `
+                        @keyframes dragon-flight {
+                            0% { transform: translateX(-100px) rotate(0deg); }
+                            50% { transform: translateX(${window.innerWidth / 2}px) rotate(180deg) scale(1.5); }
+                            100% { transform: translateX(${window.innerWidth + 100}px) rotate(360deg); }
+                        }
+                    `;
+                    document.head.appendChild(dragonStyle);
+                    
+                    document.body.appendChild(dragon);
+                    
+                    setTimeout(() => {
+                        dragon.remove();
+                        dragonStyle.remove();
+                    }, 4000);
+                }, i * 300);
+            }
+        }
+        
+        function openDimensionalGate() {
+            const gate = document.createElement('div');
+            gate.style.position = 'fixed';
+            gate.style.top = '50%';
+            gate.style.left = '50%';
+            gate.style.width = '20px';
+            gate.style.height = '20px';
+            gate.style.borderRadius = '50%';
+            gate.style.background = 'conic-gradient(from 0deg, #ff0080, #8000ff, #0080ff, #00ff80, #ffff00, #ff8000, #ff0080)';
+            gate.style.transform = 'translate(-50%, -50%)';
+            gate.style.zIndex = '10000';
+            gate.style.animation = 'gate-expand 3s ease-out forwards';
+            
+            const gateStyle = document.createElement('style');
+            gateStyle.textContent = `
+                @keyframes gate-expand {
+                    0% { 
+                        width: 20px; 
+                        height: 20px; 
+                        opacity: 0; 
+                    }
+                    50% { 
+                        width: 400px; 
+                        height: 400px; 
+                        opacity: 1; 
+                    }
+                    100% { 
+                        width: 20px; 
+                        height: 20px; 
+                        opacity: 0; 
+                    }
+                }
+            `;
+            document.head.appendChild(gateStyle);
+            
+            document.body.appendChild(gate);
+            
+            // Spawn magical creatures from the gate
+            setTimeout(() => {
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        createMagicalCreature();
+                    }, i * 100);
+                }
+            }, 1000);
+            
+            setTimeout(() => {
+                gate.remove();
+                gateStyle.remove();
+            }, 3000);
+        }
+        
+        function createMagicalCreature() {
+            const creatures = ['🧚‍♀️', '🦋', '⭐', '💫', '🌟', '✨', '🔮', '💎'];
+            const creature = document.createElement('div');
+            creature.style.position = 'fixed';
+            creature.style.top = '50%';
+            creature.style.left = '50%';
+            creature.style.fontSize = '2rem';
+            creature.style.zIndex = '9999';
+            creature.style.pointerEvents = 'none';
+            creature.textContent = creatures[Math.floor(Math.random() * creatures.length)];
+            creature.style.transform = 'translate(-50%, -50%)';
+            
+            const angle = Math.random() * Math.PI * 2;
+            const distance = Math.random() * 300 + 200;
+            const endX = Math.cos(angle) * distance;
+            const endY = Math.sin(angle) * distance;
+            
+            creature.style.animation = 'creature-emerge 2s ease-out forwards';
+            
+            const creatureStyle = document.createElement('style');
+            creatureStyle.textContent = `
+                @keyframes creature-emerge {
+                    0% { 
+                        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+                        opacity: 0;
+                    }
+                    50% { 
+                        transform: translate(-50%, -50%) scale(1.5) rotate(180deg);
+                        opacity: 1;
+                    }
+                    100% { 
+                        transform: translate(${endX}px, ${endY}px) scale(0) rotate(360deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(creatureStyle);
+            
+            document.body.appendChild(creature);
+            
+            setTimeout(() => {
+                creature.remove();
+                creatureStyle.remove();
+            }, 2000);
+        }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            initThreeJS();
+            
+            // Continuous stardust
+            setInterval(createStardust, 200);
+            
+            // Auto cosmic events
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    triggerCosmicEvent();
+                }
+            }, 10000);
+            
+            setInterval(() => {
+                if (Math.random() > 0.8) {
+                    summonDragons();
+                }
+            }, 15000);
+        });
+        
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
