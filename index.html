@@ -381,6 +381,34 @@
             }
         }
         
+        /* شاشة التحميل */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: #FFD700;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
         /* تحسينات للهواتف */
         @media (max-width: 640px) {
             .safe-container {
@@ -426,6 +454,11 @@
     </style>
 </head>
 <body class="font-arabic">
+    <!-- شاشة التحميل -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+    </div>
+    
     <!-- خلفية احتفالية -->
     <div class="birthday-background"></div>
     
@@ -454,19 +487,26 @@
     
     <!-- العناصر الطائرة الاحتفالية (فوق النصوص) -->
     <div class="birthday-floating fixed" 
-         style="font-size: clamp(2.5rem, 9vw, 6rem); top: 3%; right: 6%; color: #FF6B35; animation-delay: 1s;">🎂</div>
+         style="font-size: clamp(2.5rem, 9vw, 6rem); top: 3%; right: 6%; color: #FF6B35; animation-delay: 1s;" 
+         role="img" aria-label="كعكة عيد ميلاد">🎂</div>
     <div class="birthday-floating fixed" 
-         style="font-size: clamp(2rem, 7vw, 5rem); top: 8%; left: 5%; color: #FFD700; animation-delay: 2s;">🎉</div>
+         style="font-size: clamp(2rem, 7vw, 5rem); top: 8%; left: 5%; color: #FFD700; animation-delay: 2s;" 
+         role="img" aria-label="مفرقعات احتفالية">🎉</div>
     <div class="birthday-floating fixed" 
-         style="font-size: clamp(1.8rem, 6vw, 4.5rem); top: 60%; right: 8%; color: #DC143C; animation-delay: 3s;">🎈</div>
+         style="font-size: clamp(1.8rem, 6vw, 4.5rem); top: 60%; right: 8%; color: #DC143C; animation-delay: 3s;" 
+         role="img" aria-label="بالون">🎈</div>
     <div class="birthday-floating fixed" 
-         style="font-size: clamp(2.2rem, 8vw, 5.5rem); bottom: 20%; right: 15%; color: #4169E1; animation-delay: 4s;">🎁</div>
+         style="font-size: clamp(2.2rem, 8vw, 5.5rem); bottom: 20%; right: 15%; color: #4169E1; animation-delay: 4s;" 
+         role="img" aria-label="هدية">🎁</div>
     <div class="birthday-floating fixed" 
-         style="font-size: clamp(1.6rem, 5vw, 4rem); bottom: 40%; left: 12%; color: #FF1493; animation-delay: 5s;">⭐</div>
+         style="font-size: clamp(1.6rem, 5vw, 4rem); bottom: 40%; left: 12%; color: #FF1493; animation-delay: 5s;" 
+         role="img" aria-label="نجمة">⭐</div>
     <div class="birthday-floating fixed" 
-         style="font-size: clamp(1.9rem, 7vw, 4.8rem); top: 35%; right: 25%; color: #FF8C00; animation-delay: 6s;">🥳</div>
+         style="font-size: clamp(1.9rem, 7vw, 4.8rem); top: 35%; right: 25%; color: #FF8C00; animation-delay: 6s;" 
+         role="img" aria-label="وجه احتفالي">🥳</div>
     <div class="birthday-floating fixed" 
-         style="font-size: clamp(1.7rem, 6vw, 4.2rem); bottom: 60%; right: 30%; color: #9370DB; animation-delay: 7s;">🌟</div>
+         style="font-size: clamp(1.7rem, 6vw, 4.2rem); bottom: 60%; right: 30%; color: #9370DB; animation-delay: 7s;" 
+         role="img" aria-label="نجم ساطع">🌟</div>
     
     <!-- المحتوى الرئيسي -->
     <div class="safe-container min-h-screen flex items-center justify-center relative z-20">
@@ -477,7 +517,8 @@
                 <!-- العنوان الرئيسي -->
                 <div class="text-center mb-8 sm:mb-12 lg:mb-16">
                     <div class="animate-birthday-bounce mb-6" 
-                         style="font-size: clamp(4rem, 15vw, 8rem);">🎂</div>
+                         style="font-size: clamp(4rem, 15vw, 8rem);" 
+                         role="img" aria-label="كعكة عيد ميلاد">🎂</div>
                     
                     <h1 class="birthday-holographic text-crisp mb-6 sm:mb-8 leading-tight text-layout"
                         style="font-size: clamp(2rem, 9vw, 5rem);"
@@ -526,22 +567,22 @@
                 <!-- العناصر المهنية الاحتفالية -->
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-7 mb-8 sm:mb-12 lg:mb-16">
                     <div class="birthday-glass p-5 sm:p-7 rounded-2xl text-center birthday-hover">
-                        <div class="mb-3" style="font-size: clamp(2rem, 7vw, 3rem);">💻</div>
+                        <div class="mb-3" style="font-size: clamp(2rem, 7vw, 3rem);" role="img" aria-label="كمبيوتر">💻</div>
                         <p class="font-semibold text-orange-300 text-crisp" 
                            style="font-size: clamp(0.8rem, 3.5vw, 1rem);">عالم البرمجة</p>
                     </div>
                     <div class="birthday-glass p-5 sm:p-7 rounded-2xl text-center birthday-hover">
-                        <div class="mb-3" style="font-size: clamp(2rem, 7vw, 3rem);">🌐</div>
+                        <div class="mb-3" style="font-size: clamp(2rem, 7vw, 3rem);" role="img" aria-label="شبكة عالمية">🌐</div>
                         <p class="font-semibold text-blue-300 text-crisp"
                            style="font-size: clamp(0.8rem, 3.5vw, 1rem);">تطوير الويب</p>
                     </div>
                     <div class="birthday-glass p-5 sm:p-7 rounded-2xl text-center birthday-hover">
-                        <div class="mb-3" style="font-size: clamp(2rem, 7vw, 3rem);">🎓</div>
+                        <div class="mb-3" style="font-size: clamp(2rem, 7vw, 3rem);" role="img" aria-label="قبعة تخرج">🎓</div>
                         <p class="font-semibold text-red-300 text-crisp"
                            style="font-size: clamp(0.8rem, 3.5vw, 1rem);">التعليم</p>
                     </div>
                     <div class="birthday-glass p-5 sm:p-7 rounded-2xl text-center birthday-hover">
-                        <div class="mb-3" style="font-size: clamp(2rem, 7vw, 3rem);">💎</div>
+                        <div class="mb-3" style="font-size: clamp(2rem, 7vw, 3rem);" role="img" aria-label="ألماس">💎</div>
                         <p class="font-semibold text-yellow-300 text-crisp"
                            style="font-size: clamp(0.8rem, 3.5vw, 1rem);">الخبرة</p>
                     </div>
@@ -586,7 +627,7 @@
         let mouseX = 0, mouseY = 0;
         let particleCount = 0;
         const isMobile = window.innerWidth < 768;
-        const maxParticles = isMobile ? 40 : 100;
+        const maxParticles = isMobile ? 30 : 80; // تقليل عدد الجسيمات لتحسين الأداء
         
         // ألوان عيد الميلاد
         const birthdayColors = [
@@ -596,28 +637,48 @@
         
         // تهيئة Three.js المحسّنة
         function initOptimizedThreeJS() {
-            if (!window.THREE) return;
+            if (!window.THREE) {
+                hideLoadingScreen();
+                return;
+            }
             
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            
-            renderer = new THREE.WebGLRenderer({ 
-                alpha: true, 
-                antialias: !isMobile,
-                powerPreference: isMobile ? "low-power" : "high-performance"
-            });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2));
-            document.getElementById('three-container').appendChild(renderer.domElement);
-            
-            createBirthdayGalaxy();
-            camera.position.z = 50;
-            animate3D();
+            try {
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                
+                renderer = new THREE.WebGLRenderer({ 
+                    alpha: true, 
+                    antialias: !isMobile,
+                    powerPreference: isMobile ? "low-power" : "high-performance"
+                });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2));
+                document.getElementById('three-container').appendChild(renderer.domElement);
+                
+                createBirthdayGalaxy();
+                camera.position.z = 50;
+                animate3D();
+            } catch (error) {
+                console.error('Three.js initialization error:', error);
+            } finally {
+                hideLoadingScreen();
+            }
+        }
+        
+        // إخفاء شاشة التحميل
+        function hideLoadingScreen() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }
         }
         
         // إنشاء مجرة احتفالية
         function createBirthdayGalaxy() {
-            const particleCount = isMobile ? 2500 : 7000;
+            const particleCount = isMobile ? 1500 : 4000; // تقليل عدد الجسيمات لتحسين الأداء
             const geometry = new THREE.BufferGeometry();
             const vertices = new Float32Array(particleCount * 3);
             const colors = new Float32Array(particleCount * 3);
@@ -670,7 +731,7 @@
         // إنشاء نجوم احتفالية
         function createBirthdayStars() {
             const starField = document.getElementById('starfield');
-            const starCount = isMobile ? 50 : 100;
+            const starCount = isMobile ? 30 : 70; // تقليل عدد النجوم لتحسين الأداء
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
@@ -767,7 +828,7 @@
         
         // إطلاق الألعاب النارية
         function launchFireworks() {
-            const fireworkCount = isMobile ? 8 : 15;
+            const fireworkCount = isMobile ? 6 : 12; // تقليل عدد الألعاب النارية لتحسين الأداء
             for (let i = 0; i < fireworkCount; i++) {
                 setTimeout(() => {
                     createFireworkExplosion();
@@ -784,7 +845,7 @@
         function createFireworkExplosion() {
             const x = Math.random() * window.innerWidth;
             const y = Math.random() * (window.innerHeight / 2);
-            const sparkCount = isMobile ? 12 : 20;
+            const sparkCount = isMobile ? 10 : 16; // تقليل عدد الشرارات لتحسين الأداء
             
             for (let i = 0; i < sparkCount; i++) {
                 const spark = document.createElement('div');
@@ -822,7 +883,7 @@
         
         // إطلاق الكونفيتي
         function throwConfetti() {
-            const confettiCount = isMobile ? 50 : 100;
+            const confettiCount = isMobile ? 40 : 80; // تقليل عدد الكونفيتي لتحسين الأداء
             
             for (let i = 0; i < confettiCount; i++) {
                 setTimeout(() => {
@@ -873,7 +934,7 @@
             setTimeout(() => throwConfetti(), 500);
             
             // إضافة تأثيرات إضافية
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 15; i++) { // تقليل عدد الجسيمات لتحسين الأداء
                 setTimeout(() => {
                     createBirthdayParticle();
                 }, i * 100);
@@ -905,10 +966,11 @@
                 initOptimizedThreeJS();
             } catch (error) {
                 console.log('Three.js initialization skipped');
+                hideLoadingScreen();
             }
             
             // إنشاء جسيمات دورية
-            const particleInterval = isMobile ? 1500 : 800;
+            const particleInterval = isMobile ? 2000 : 1000; // تقليل التكرار لتحسين الأداء
             setInterval(() => {
                 if (particleCount < maxParticles) {
                     createBirthdayParticle();
@@ -920,18 +982,18 @@
                 if (Math.random() > 0.9) {
                     launchFireworks();
                 }
-            }, 20000);
+            }, 25000); // زيادة الفترة الزمنية لتحسين الأداء
             
             setInterval(() => {
                 if (Math.random() > 0.85) {
                     throwConfetti();
                 }
-            }, 25000);
+            }, 30000); // زيادة الفترة الزمنية لتحسين الأداء
             
-            // احتفال تلقائي كل دقيقة
+            // احتفال تلقائي كل دقيقتين
             setInterval(() => {
                 celebrationMode();
-            }, 60000);
+            }, 120000); // زيادة الفترة الزمنية لتحسين الأداء
         }
         
         // معالجة الأحداث
@@ -975,7 +1037,7 @@
         window.addEventListener('load', () => {
             setTimeout(() => {
                 celebrationMode();
-            }, 2000);
+            }, 2500); // زيادة التأخير قليلاً للسماح بتحميل الصفحة بالكامل
         });
     </script>
 </body>
